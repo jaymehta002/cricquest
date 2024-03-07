@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* *{
+  background-color: #f3f2ee;
+} */
+
+.bg-design-white {
+  background-color: #f3f2ee;
+}
+
+.design-border {
+  border: 2px solid #d3d2cf;
+}
+
+.bg-design-gray{
+  background-color: #d3d2cf !important;
+
+}
+
+.age {
+  font-weight: 800;
+    color: #D84F4F;
+    text-shadow: -3px 0 white, 0 3px white, 3px 0 white, 0 -3px white;
+}
+
+.svg {
+  background-color: red !important;
+}
+
+.design-text-black {
+  color: #1e293b;
+}
