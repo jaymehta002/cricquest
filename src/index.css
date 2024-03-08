@@ -65,3 +65,7 @@
 .custom-button:hover {
   background-image: linear-gradient(to right, #1E3A8A, #2563EB, #1e3a8a);
 }
+
+.bg-hint{
+  background-color: #4d4d4d;
+}

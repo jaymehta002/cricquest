@@ -7,6 +7,7 @@ import { checkLocalStorage } from "../functions/Players";
 import { updateStorePlayer } from "../functions/Players";
 import { Franchise } from "../utils/design";
 import { CountryFlag } from "../utils/TeamDesign";
+import { FaHeart, FaMagnifyingGlass } from "react-icons/fa6";
 const Game = () => {
   const [inputValue, setInputValue] = useState('');
   const [store, setStore] = useState({
@@ -118,12 +119,21 @@ const Game = () => {
   };
 
   return (
-    <>
+    <div className='bg-design-white'>
+    
+
+    <div>
+    <div className="flex justify-center flex-row gap-16 text-center items-center mb-1">
+      <span className="bg-hint text-white flex flex-row items-center px-1 py-1 rounded-lg gap-1 font-inter font-semibold"> < FaMagnifyingGlass color='yellow' /> {store.hintsLeft}</span>
+      <span className="design-text-black text-xl">Find today&#39;s player</span>
+      <span className="bg-hint text-white flex flex-row items-center px-1 py-1 rounded-lg gap-1 font-inter font-semibold"> < FaHeart color='red'/> {store.lives}</span>
+    </div>
     <div className="flex justify-center gap-1 items-center">
         <PlayerCol index={0} hero={hero[0]} player={store.players[0]} hintMode={hintMode} revealHint={revealHint}/>
         <PlayerCol index={1} hero={hero[1]} player={store.players[1]} hintMode={hintMode} revealHint={revealHint}/>
         <PlayerCol index={2} hero={hero[2]} player={store.players[2]} hintMode={hintMode} revealHint={revealHint}/>
         <PlayerCol index={3} hero={hero[3]} player={store.players[3]} hintMode={hintMode} revealHint={revealHint}/>
+    </div>
     </div>
 
     <div className="flex justify-center gap-1 items-center">
@@ -134,7 +144,7 @@ const Game = () => {
             : isEnterPressed? '' :'Exter text here..'}</span>
         </div>
       <KeyBoard onKeyPress={handleKeyPress} />
-    </>
+    </div>
   )
 }
 
