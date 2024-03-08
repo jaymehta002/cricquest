@@ -16,6 +16,7 @@ export function updateStorePlayer(i, check, key, store, setStore) {
     const newStore = {...store};
     newStore.players[i][key] = check[key];
     setStore(newStore);
+    localStorage.setItem('store', JSON.stringify(store));
 }
 
 export function compare(val, hero, store, setStore) {
@@ -35,6 +36,6 @@ export function compare(val, hero, store, setStore) {
         if(hero[i].playerName.toLowerCase() === check.playerName.toLowerCase()) {
             updateStorePlayer(i, check, 'playerName', store, setStore);
         }
-        localStorage.setItem('store', JSON.stringify(store));
     }
+    localStorage.setItem('store', JSON.stringify(store));
 }

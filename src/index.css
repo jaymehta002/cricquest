@@ -26,7 +26,7 @@
 .age {
   font-weight: 800;
     color: #D84F4F;
-    text-shadow: -3px 0 white, 0 3px white, 3px 0 white, 0 -3px white;
+    text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
 }
 
 .svg {
@@ -35,4 +35,33 @@
 
 .design-text-black {
   color: #1e293b;
+}
+
+
+.completed-blue-bg{
+  background-color: #5c88dd !important;
+  color: white !important;
+}
+
+.completed-blue-head{
+  background-color: #174fbb !important;
+  color: white !important;
+}
+
+
+.custom-button {
+  background-image: linear-gradient(to right, #1E40AF, #3B82F6, #1E40AF);
+  color: white;
+  font-weight: 600;
+  font-size: 2rem;
+  padding: 1px 4rem;
+  border-radius: 0.5rem;
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.custom-button:hover {
+  background-image: linear-gradient(to right, #1E3A8A, #2563EB, #1e3a8a);
 }
