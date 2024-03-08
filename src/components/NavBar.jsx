@@ -34,7 +34,7 @@ const NavBar = () => {
       <div className="md:max-w-4xl mx-auto px-4 py-3">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <img className="h-8 mr-2" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Logo" />
+            <img className="h-8 mr-2" src="/Logosplash.svg" alt="Logo" />
             <span className="design-text-black font-inter text-2xl font-semibold">Cricquest</span>
           </div>
           <div className="flex items-center space-x-4">

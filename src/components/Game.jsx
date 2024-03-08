@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PlayerCol from "./PlayerCol"
 import KeyBoard from "./KeyBoard"
 import { PLAYERS } from '../assets/players';
 import { compare } from '../functions/Players';
 import { checkLocalStorage } from "../functions/Players";
+import { updateStorePlayer } from "../functions/Players";
+import { Franchise } from "../utils/design";
+import { CountryFlag } from "../utils/TeamDesign";
 const Game = () => {
   const [inputValue, setInputValue] = useState('');
   const [store, setStore] = useState({
@@ -18,6 +21,8 @@ const Game = () => {
     hintsLeft: 3
   });
   const [hintMode, setHintMode] = useState(false);
+  const [isEnterPressed, setEnterPressed] = useState(false);
+  const [animationValue, setAnimationValue] = useState('');
   const hero = [
     PLAYERS[0],
     PLAYERS[1],
@@ -26,13 +31,21 @@ const Game = () => {
   ]
   checkLocalStorage();
 
-  function revealHint(index, type, value) {
+  function toggleHint() {
+    setHintMode((prevHintMode) => !prevHintMode);
+  }
+
+  const revealHint= (index, key, value) => {
+    // console.log(index, key, value);
+    if(store.hintsLeft === 0) return;
+    updateStorePlayer(index, value, key, store, setStore)
     const newStore = {...store};
+    newStore.hints.push({index, key, value});
     newStore.hintsLeft -= 1;
-    newStore.hints.push({index, type, value});
     setStore(newStore);
-    setHintMode(false);
-}
+    localStorage.setItem('store', JSON.stringify(store));
+    toggleHint();
+  }
 
   const handleKeyPress = (key) => {
     if(key === 'DEL' ){
@@ -41,13 +54,18 @@ const Game = () => {
       setInputValue((prevInputValue) => prevInputValue + ' ');
     } else if (key === 'GUESS') {
       if(inputValue === '') return;
+      setTimeout(() => {
+        setEnterPressed(false);
+      }, 3000);
+      setEnterPressed(true);
       const val = handleSuggestions();
+      setAnimationValue(val);
       compare(val, hero, store, setStore);
       console.log(store);
       setInputValue('');
     } else if (key === 'HINT') {
       if(store.hintsLeft === 0) return;
-      setHintMode(true);
+      toggleHint();
     } else {
       setInputValue((prevInputValue) => prevInputValue + key);
     }
@@ -74,17 +92,46 @@ const Game = () => {
     }
   }
 
+
+  const animate = (val) => {
+    if (val === '') return null; // Return null if val is empty
+    return (
+      <>
+        <div className="flex flex-row gap-4 text-center items center">
+        <span>
+          <Franchise team={val.team} />
+          <p className="design-text-black">{val.team}</p>
+        </span>
+        <span>
+          <p className="font-luckiest-guy age text-4xl">{val.age}</p>
+        </span>
+        <span className="mt-2">
+          <CountryFlag country={val.nation} />
+          <p className="design-text-black">{val.nation}</p>
+        </span>
+        </div>
+        <div>
+          {store.lives} lives left
+        </div>
+      </>
+    );
+  };
+
   return (
     <>
     <div className="flex justify-center gap-1 items-center">
-        <PlayerCol index={0} hero={hero[0]} player={store.players[0]} hintMode={hintMode} setHintMode={setHintMode} revealHint={revealHint} store={store} setStore={setStore}/>
-        <PlayerCol index={1} hero={hero[1]} player={store.players[1]} hintMode={hintMode} setHintMode={setHintMode} revealHint={revealHint} store={store} setStore={setStore}/>
-        <PlayerCol index={2} hero={hero[2]} player={store.players[2]} hintMode={hintMode} setHintMode={setHintMode} revealHint={revealHint} store={store} setStore={setStore}/>
-        <PlayerCol index={3} hero={hero[3]} player={store.players[3]} hintMode={hintMode} setHintMode={setHintMode} revealHint={revealHint} store={store} setStore={setStore}/>
+        <PlayerCol index={0} hero={hero[0]} player={store.players[0]} hintMode={hintMode} revealHint={revealHint}/>
+        <PlayerCol index={1} hero={hero[1]} player={store.players[1]} hintMode={hintMode} revealHint={revealHint}/>
+        <PlayerCol index={2} hero={hero[2]} player={store.players[2]} hintMode={hintMode} revealHint={revealHint}/>
+        <PlayerCol index={3} hero={hero[3]} player={store.players[3]} hintMode={hintMode} revealHint={revealHint}/>
     </div>
 
     <div className="flex justify-center gap-1 items-center">
-        <span className="text-xl py-10 font-bold">{inputValue?displaySuggestion():'Exter text here..'}</span>
+        <span className="text-xl py-10 font-bold">
+        {isEnterPressed && animate(animationValue)}
+          {inputValue 
+            ? displaySuggestion()
+            : isEnterPressed? '' :'Exter text here..'}</span>
         </div>
       <KeyBoard onKeyPress={handleKeyPress} />
     </>
