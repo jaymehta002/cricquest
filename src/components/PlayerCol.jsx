@@ -4,18 +4,18 @@ import {Batsman, Bowler, WicketKeeper, AllRounder, Franchise, Age, BlankGuess} f
 const PlayerCol = ({index, hero, player, hintMode, revealHint }) => {
   return (
     <div className={`flex bg-design-white w-auto font-inter flex-col gap-2 design-border justify-center rounded-xl items-center ${player.playerName? 'completed-blue-bg': 'bg-design-white' }`}>
-      <span className={`w-full text-center px-6 py-1 design-text-black font-semibold rounded-t-lg ${player.playerName? 'completed-blue-head' : 'bg-design-gray'}`}>{hero.price}</span>
+      <span className={`w-full text-center md:px-6 py-1 design-text-black font-semibold rounded-t-lg ${player.playerName? 'completed-blue-head' : 'bg-design-gray'}`}>{hero.price}</span>
       <span className={`px-1 design-text-black flex flex-col items-center justify-center text-center text-xs font-semibold ${player.playerName? 'completed-blue-bg': 'bg-design-white'}`}>
         {hero.role === 'BT' ? 
           (  
             <>
               <Batsman />
-              <span className=''>BATSMAN</span>
+              <span className='mb-4 md:mb-0'>BATSMAN</span>
             </>   
           ) : hero.role === 'BW' ? (
             <>
               <Bowler />
-              <p className=''>BOWLER</p>
+              <p className='mb-4 md:mb-0'>BOWLER</p>
             </>
           ) : hero.role === 'AR' ? (
             <>

@@ -41,30 +41,30 @@ const Card = () => {
 
     return (
         <div>
-            {cards.map((card, index) => (
-                <div key={index} className={`hero mt-20 h-full bg-design-white ${index % 2 === 0 ? 'flex-col' : 'flex-col-reverse'}` }>
-                    <div className="hero-content flex-col gap-12 lg:flex-row">
-                        {index % 2 === 0 ? (
-                            <>
-                                <img src={card.imgSrc} className="max-w-full lg:max-w-sm shadow-2xl lg:mr-8" />
-                                <div className="w-full lg:w-96">
-                                    <h1 className="text-3xl lg:text-4xl design-text-black font-bold">{card.title}</h1>
-                                    <p className="py-6 design-text-black">{card.description}</p>
-                                </div>
-                            </>
-                        ) : (
-                            <>
-                                <div className="w-full lg:w-96">
-                                    <h1 className="text-3xl lg:text-4xl design-text-black font-bold">{card.title}</h1>
-                                    <p className="py-6 design-text-black">{card.description}</p>
-                                </div>
-                                <img src={card.imgSrc} className="max-w-full lg:max-w-sm shadow-2xl lg:ml-8" />
-                            </>
-                        )}
-                    </div>
-                </div>
-            ))}
+    {cards.map((card, index) => (
+        <div key={index} className={`hero mt-20 h-full bg-design-white ${index % 2 === 0 ? 'flex-col' : 'flex-col-reverse'}` }>
+            <div className="hero-content flex-col gap-12 lg:flex-row">
+                {index % 2 === 0 ? (
+                    <>
+                        <img src={card.imgSrc} className="max-w-full lg:max-w-sm shadow-2xl lg:mr-8" />
+                        <div className="w-full lg:w-96">
+                            <h1 className="text-3xl lg:text-4xl design-text-black font-bold">{card.title}</h1>
+                            <p className="py-6 design-text-black">{card.description}</p>
+                        </div>
+                    </>
+                ) : (
+                    <>
+                        <div className="w-full lg:w-96">
+                            <h1 className="text-3xl lg:text-4xl design-text-black font-bold">{card.title}</h1>
+                            <p className="py-6 design-text-black">{card.description}</p>
+                        </div>
+                        <img src={card.imgSrc} className="max-w-full lg:max-w-sm shadow-2xl lg:ml-8" />
+                    </>
+                )}
+            </div>
         </div>
+    ))}
+</div>
     );
 };
 
