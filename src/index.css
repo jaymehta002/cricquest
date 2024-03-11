@@ -6,12 +6,41 @@
 @tailwind utilities;
 
 
-/* *{
+*{
+  padding: 0;
+  margin: 0;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+body{
   background-color: #f3f2ee;
-} */
+}
+
+@media screen and (min-width: 424px) and (max-width: 474px) {
+  /* Write your CSS rules here */
+  .equal{
+    margin-bottom: 1rem;
+  }
+  .eq {
+    margin-bottom: 1rem;
+  }
+
+}
+
+@media screen and (max-width: 424px) {
+  /* Write your CSS rules here */
+  .equal{
+    margin-bottom: 1rem;
+  } 
+}
+
 
 .bg-design-white {
   background-color: #f3f2ee;
+  /* width: 100%; */
 }
 
 .design-border {

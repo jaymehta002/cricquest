@@ -19,8 +19,17 @@ const Game = () => {
     ],
     lives: 15,
     hints: [],
-    hintsLeft: 3
+    hintsLeft: 3,
   });
+  const [data, setData] = useState({
+    gameOver: false,
+    gameCompleted: false,
+    totalGames:0,
+    totalWins:0,
+    streak:0,
+    curDate: '',
+    lastPlayed: '',
+  }); 
   const [hintMode, setHintMode] = useState(false);
   const [isEnterPressed, setEnterPressed] = useState(false);
   const [animationValue, setAnimationValue] = useState('');
@@ -30,7 +39,10 @@ const Game = () => {
     PLAYERS[2],
     PLAYERS[33]
   ]
-  checkLocalStorage();
+  
+  useEffect(() => {
+    checkLocalStorage(store, setStore);
+  },[])
 
   function toggleHint() {
     setHintMode((prevHintMode) => !prevHintMode);
@@ -61,7 +73,7 @@ const Game = () => {
       setEnterPressed(true);
       const val = handleSuggestions();
       setAnimationValue(val);
-      compare(val, hero, store, setStore);
+      compare(val, hero, store, setStore, data, setData);
       console.log(store);
       setInputValue('');
     } else if (key === 'HINT') {
@@ -119,16 +131,16 @@ const Game = () => {
   };
 
   return (
-    <div className='bg-design-white'>
+    <div className='bg-design-white mt-4'>
     
 
     <div>
-    <div className="flex justify-center flex-row gap-16 text-center items-center mb-1">
+    <div className="flex justify-center flex-row sm:gap-24 lg:gap-32 md:gap-32 gap-16 px-4 text-center items-center mb-1">
       <span className="bg-hint text-white flex flex-row items-center px-1 py-1 rounded-lg gap-1 font-inter font-semibold"> < FaMagnifyingGlass color='yellow' /> {store.hintsLeft}</span>
       <span className="design-text-black text-xl">Find today&#39;s player</span>
       <span className="bg-hint text-white flex flex-row items-center px-1 py-1 rounded-lg gap-1 font-inter font-semibold"> < FaHeart color='red'/> {store.lives}</span>
     </div>
-    <div className="flex justify-center gap-1 items-center">
+    <div className="m-2 flex justify-center gap-1 px-2 items-center">
         <PlayerCol index={0} hero={hero[0]} player={store.players[0]} hintMode={hintMode} revealHint={revealHint}/>
         <PlayerCol index={1} hero={hero[1]} player={store.players[1]} hintMode={hintMode} revealHint={revealHint}/>
         <PlayerCol index={2} hero={hero[2]} player={store.players[2]} hintMode={hintMode} revealHint={revealHint}/>
@@ -143,7 +155,7 @@ const Game = () => {
             ? displaySuggestion()
             : isEnterPressed? '' :'Exter text here..'}</span>
         </div>
-      <KeyBoard onKeyPress={handleKeyPress} />
+      <KeyBoard onKeyPress={handleKeyPress} data={data} />
     </div>
   )
 }

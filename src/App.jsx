@@ -2,6 +2,7 @@ import NavBar from "./components/NavBar"
 import Game from "./components/Game";
 import Home from "./components/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import PrivacyPolicy from "./components/PrivacyPolicy";
 
 const App = () => {
 
@@ -12,6 +13,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/play" element={<Game />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         </Routes>
       </BrowserRouter>
     </>

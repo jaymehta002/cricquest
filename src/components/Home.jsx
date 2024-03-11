@@ -30,11 +30,12 @@ const Home = () => {
 
         <h1 className="text-3xl md:mt-0 mt-64 lg:text-5xl design-text-black font-bold mb-1 text-white text-center ">Welcome to CricQuest</h1>
         <p className="text-lg lg:text-xl font-inter font-semibold text-blue-500 mb-4 text-center ">A fun guessing game of cricket players for this IPL season</p>
-
+        <Link to="/play">
         <button className="custom-button mb-2">
-            <Link to="/play">PLAY</Link>
+            PLAY
         </button>
-        <a href="" className="font-inter design-text-black font-bold">How to play?</a>
+        </Link>
+        <a href="#about" className="font-inter design-text-black font-bold">How to play?</a>
     </div>
 </div>
 
@@ -43,7 +44,7 @@ const Home = () => {
         <Card />
 
         <footer className="design-text-black font-inter bg-design-white py-4 text-center">
-            <p className="text-base font-semibold">© 2024 Cricquest.in. All rights reserved.</p>
+            <p className="text-base font-semibold">© 2024 Cricquest.in. <Link to='/privacy-policy'>All rights reserved.</Link> </p>
         </footer>
       </div> 
     );

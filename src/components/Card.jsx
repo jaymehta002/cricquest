@@ -40,7 +40,8 @@ const Card = () => {
     ];
 
     return (
-        <div>
+        <>
+        <div id='about' className="hidden md:block">
     {cards.map((card, index) => (
         <div key={index} className={`hero mt-20 h-full bg-design-white ${index % 2 === 0 ? 'flex-col' : 'flex-col-reverse'}` }>
             <div className="hero-content flex-col gap-12 lg:flex-row">
@@ -64,7 +65,23 @@ const Card = () => {
             </div>
         </div>
     ))}
-</div>
+    </div>
+    
+    <div id="about" className="block text-center md:hidden">
+        {cards.map((card, index) => (
+            <div key={index} className="hero mt-8 h-full bg-design-white">
+                <div className="hero-content flex-col gap-12">
+                        <h1 className="text-3xl design-text-black font-bold">{card.title}</h1>
+                    <img src={card.imgSrc} className="max-w-full shadow-2xl" />
+                    <div className="w-full">
+                        <p className="py-6 design-text-black">{card.description}</p>
+                    </div>
+                </div>
+            </div>
+        ))}
+    </div>
+
+    </>
     );
 };
 

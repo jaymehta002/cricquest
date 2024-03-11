@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-
+import { Link } from 'react-router-dom';
 const NavBar = () => {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
@@ -33,10 +33,12 @@ const NavBar = () => {
     <nav className="bg-design-white shadow-lg">
       <div className="md:max-w-4xl mx-auto px-4 py-3">
         <div className="flex justify-between items-center">
+            <Link to='/'>
           <div className="flex items-center">
             <img className="h-8 mr-2" src="/Logosplash.svg" alt="Logo" />
             <span className="design-text-black font-inter text-2xl font-semibold">Cricquest</span>
           </div>
+            </Link>
           <div className="flex items-center space-x-4">
             <div className="text-gray-500 font-semibold">
               {timeLeft.hours.toString().padStart(2, '0')}:
