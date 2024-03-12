@@ -8,6 +8,8 @@ import { updateStorePlayer } from "../functions/Players";
 import { Franchise } from "../utils/design";
 import { CountryFlag } from "../utils/TeamDesign";
 import { FaHeart, FaMagnifyingGlass } from "react-icons/fa6";
+import GameCompleted from "./GameCompleted";
+import GameLost from "./GameLost";
 const Game = () => {
   const [inputValue, setInputValue] = useState('');
   const [store, setStore] = useState({
@@ -21,9 +23,9 @@ const Game = () => {
     hints: [],
     hintsLeft: 3,
   });
+  const [gameCompleted, setGameCompleted] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
   const [data, setData] = useState({
-    gameOver: false,
-    gameCompleted: false,
     totalGames:0,
     totalWins:0,
     streak:0,
@@ -41,7 +43,7 @@ const Game = () => {
   ]
   
   useEffect(() => {
-    checkLocalStorage(store, setStore);
+    checkLocalStorage(store, setStore, data, setData, setGameOver, setGameCompleted);
   },[])
 
   function toggleHint() {
@@ -73,7 +75,7 @@ const Game = () => {
       setEnterPressed(true);
       const val = handleSuggestions();
       setAnimationValue(val);
-      compare(val, hero, store, setStore, data, setData);
+      compare(val, hero, store, setStore, data, setData, gameCompleted, gameOver, setGameOver, setGameCompleted);
       console.log(store);
       setInputValue('');
     } else if (key === 'HINT') {
@@ -87,11 +89,12 @@ const Game = () => {
   const handleSuggestions = () => {
     const input = inputValue.toLowerCase();
     const suggestions = PLAYERS.filter((player) => player.playerName.toLowerCase().includes(input));
-    return suggestions[0];
+    return suggestions[0]? suggestions[0] : null;
   }
 
   const displaySuggestion = () => {
     const val = handleSuggestions();
+    if(!val) return inputValue;
     const idx = val.playerName.toLowerCase().indexOf(inputValue.toLowerCase());
     if (val) {
       return (
@@ -102,6 +105,8 @@ const Game = () => {
           <span style={{opacity:0.3}}>{val.playerName.slice(idx + inputValue.length).toUpperCase()}</span>
         </>
       )
+    } else {
+      return inputValue;
     }
   }
 
@@ -148,14 +153,26 @@ const Game = () => {
     </div>
     </div>
 
-    <div className="flex justify-center gap-1 items-center">
-        <span className="text-xl py-10 font-bold">
-        {isEnterPressed && animate(animationValue)}
-          {inputValue 
-            ? displaySuggestion()
-            : isEnterPressed? '' :'Exter text here..'}</span>
-        </div>
-      <KeyBoard onKeyPress={handleKeyPress} data={data} />
+    { gameCompleted? (
+      <>
+        <GameCompleted data={data} />
+      </>
+    ) : gameOver ? (
+      <>
+        <GameLost data={data} />
+      </>
+    ) : (
+      <>
+      <div className="flex justify-center gap-1 items-center">
+      <span className="text-xl py-10 font-bold">
+      {isEnterPressed && animate(animationValue)}
+        {inputValue 
+          ? displaySuggestion()
+          : isEnterPressed? '' :'Exter text here..'}</span>
+      </div>
+    <KeyBoard onKeyPress={handleKeyPress} data={data} />
+      </>
+    )}
     </div>
   )
 }

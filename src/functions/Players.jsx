@@ -1,20 +1,31 @@
 import { PLAYERS } from "../assets/players"; 
 
-export function checkLocalStorage(store, setStore) {
+export async function checkLocalStorage(store, setStore, data, setData, setGameCompleted, setGameOver) {
     const fullDate = new Date();
     const date = fullDate.getDate();
     const lastPlayed = localStorage.getItem('lastPlayed');
+    
     if(lastPlayed == date){
         console.log('Welcome back');
+        const temp = JSON.parse(localStorage.getItem('stat'));
+        if(!temp) localStorage.setItem('stat', JSON.stringify(data));
+
+        const gc = localStorage.getItem('gameCompleted');
+        if(!gc) localStorage.setItem('gameCompleted', false)
+
+        const go = localStorage.getItem('gameOver'); 
+        if(!go) localStorage.setItem('gameOver', false)
     } else {
-        console.log('Welcome');
+        localStorage.removeItem('store')
+        localStorage.removeItem('gameCompleted');
+        localStorage.removeItem('gameOver');
         localStorage.setItem('lastPlayed', date);
     }
-    const data = localStorage.getItem('store');
-    if(!data) return;
-    const newStore = JSON.parse(data);
+    
+    const newData = localStorage.getItem('store');
+    if(!newData) return;
+    const newStore = JSON.parse(newData);
     setStore(newStore);
-
 }
 
 export async function updateLife(store, setStore) {
@@ -22,14 +33,7 @@ export async function updateLife(store, setStore) {
     const newStore = {...store};
     newStore.lives -= 1;
     await setStore(newStore);
-    await localStorage.setItem('store', JSON.stringify(newStore));
-}
-
-export async function incrementLife (store, setStore) {
-    const newStore = {...store};
-    newStore.lives += 1;
-    setStore(newStore);
-    await localStorage.setItem('store', JSON.stringify(newStore));
+    localStorage.setItem('store', JSON.stringify(newStore));
 }
 
 
@@ -40,34 +44,33 @@ export function updateStorePlayer(i, check, key, store, setStore) {
     localStorage.setItem('store', JSON.stringify(store));
 }
 
-export async function checkStat(store, data, setData) {
-    const newDate = new Date();
-    const date = newDate.getDate();
-    const newData = {...data};
-    newData.curDate = date;
-
-    if(data.lastPlayed === (data.curDate)){
-        newData.streak += 1;
-        console.log('streak'); 
+export async function checkStat(store, data, setData, setGameOver, setGameCompleted) {
+    const newData = JSON.parse(localStorage.getItem('stat'));
+    if(!newData) return;
+    const newStat = {...newData};
+    if(store.lives <= 0) {
+        newStat.totalGames += 1;
+        setGameOver(true);
+        localStorage.setItem('gameOver', 'true');
+        return;
     }
-
-    if(store.players.every((player) => player.playerName !== '')){
-        newData.gameCompleted = true;
-        newData.totalGames += 1;
-        newData.totalWins += 1;
-        newData.lastPlayed = date;
-    } else if(store.lives <= 1){
-        newData.gameOver = true;
-        newData.totalGames += 1;
+    console.log(store.players.every((player) => player.playerName !== ''))
+    if(store.players.every((player) => player.playerName !== '')) {
+        console.log('Game Completed');
+        newStat.totalWins += 1;
+        newStat.totalGames += 1;
+        setGameCompleted(true);
+        localStorage.setItem('gameCompleted', 'true');
+        return;
     }
-    await setData(newData);
-    await localStorage.setItem('data', JSON.stringify(newData));
+    setData(newStat);
+    localStorage.setItem('stat', JSON.stringify(newStat));
 }
 
-export function compare(val, hero, store, setStore, data, setData) {
+export function compare(val, hero, store, setStore, data, setData ,gameCompleted, gameOver, setGameOver, setGameCompleted) {
     const check = PLAYERS.find((player) => player.playerName.toLowerCase() === val.playerName.toLowerCase());
     if(!check) return;
-    checkStat(store, data, setData);
+    checkStat(store, data, setData, setGameOver, setGameCompleted);
     let flag = false;
     for(let i=0; i<4; i++){
         if(hero[i].team.toLowerCase() === check.team.toLowerCase()) {
@@ -84,6 +87,7 @@ export function compare(val, hero, store, setStore, data, setData) {
             updateStorePlayer(i, check, 'playerName', store, setStore);
         }
     }
+
     if(flag) {
         // incrementLife(store, setStore);
         flag = false;
