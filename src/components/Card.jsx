@@ -11,12 +11,12 @@ const Card = () => {
             description: 'To guess a player, simply start typing their name using the keyboard provided. As you type, suggestions will appear. Navigate through the suggestions using the arrows, and once your desired player is highlighted, hit the "Guess" button.'
         },
         {
-            imgSrc: '/about3.png',
+            imgSrc: '/about3.svg',
             title: 'Spot Common Traits',
             description: 'Compare your Player Guess. If your guessed player shares any traits with the hidden players, such as Nation, team, age, or Role, those traits will be revealed. Use this valuable information to narrow down your future guesses.'
         },
         {
-            imgSrc: '/about4.svg',
+            imgSrc: '/unveil.svg',
             title: 'Unveil the Players',
             description: `Correct Guesses - A successful guess will unveil the player's name, highlighted in blue. However, an incorrect guess, regardless of whether any traits match, will cost you a life.`
         },
@@ -41,7 +41,7 @@ const Card = () => {
 
     return (
         <>
-        <div id='about' className="hidden md:block">
+        <div id='about' className="hidden md:block font-inter">
     {cards.map((card, index) => (
         <div key={index} className={`hero mt-20 h-full bg-design-white ${index % 2 === 0 ? 'flex-col' : 'flex-col-reverse'}` }>
             <div className="hero-content flex-col gap-12 lg:flex-row">

@@ -7,11 +7,11 @@ export async function checkLocalStorage(store, setStore, data, setData, setGameC
     const fullDate = new Date();
     const date = fullDate.getDate();
     const lastPlayed = localStorage.getItem('lastPlayed');
-    
     if(lastPlayed == date){
         console.log('Welcome back');
         const temp = JSON.parse(localStorage.getItem('stat'));
         if(!temp) localStorage.setItem('stat' , JSON.stringify(data));
+        await setData(temp);
 
         const gc = JSON.parse(localStorage.getItem('gameCompleted'));
         if(gc === true) setGameCompleted(true);
@@ -83,14 +83,20 @@ export function compare(val, hero, store, setStore, data, setData ,gameCompleted
             updateStorePlayer(i, check, 'team', store, setStore);
         }
         if(hero[i].age === check.age) {
-            updateStorePlayer(i, check, 'age', store, setStore);
+            setTimeout(() => {
+                updateStorePlayer(i, check, 'age', store, setStore);
+            }, 500)
         }
         if(hero[i].nation.toLowerCase() === check.nation.toLowerCase()) {
-            updateStorePlayer(i, check, 'nation', store, setStore);
+            setTimeout(() => {
+                updateStorePlayer(i, check, 'nation', store, setStore);
+            }, 1000)
         }
         if(hero[i].playerName.toLowerCase() === check.playerName.toLowerCase()) {
             flag = true;
-            updateStorePlayer(i, check, 'playerName', store, setStore);
+            setTimeout(() => {
+                updateStorePlayer(i, check, 'playerName', store, setStore);
+            }, 2000);
         }
     }
     if(flag) {

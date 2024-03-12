@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 
 
-@tailwind base;
+/* @tailwind base; */
 @tailwind components;
 @tailwind utilities;
 
@@ -30,9 +30,9 @@ body{
 
 }
 
-@media screen and (max-width: 424px) {
+@media screen and (max-width: 399px) {
   /* Write your CSS rules here */
-  .equal{
+  .bot{
     margin-bottom: 1rem;
   } 
 }
@@ -122,4 +122,82 @@ body{
 
 .bg-hint{
   background-color: #4d4d4d;
+}
+
+
+
+.animate-custom-1 {
+  animation-name: customAnimation;
+  animation-duration: 1.5s; /* Adjust duration as needed */
+  animation-timing-function: ease-in-out; /* Adjust timing function as needed */
+  animation-iteration-count: 1; /* Play animation once */
+}
+.animate-custom-2 {
+  animation-name: customAnimation;
+  animation-delay: 0.5s;
+  opacity: 0;
+  animation-duration: 1.5s; /* Adjust duration as needed */
+  animation-timing-function: ease-in-out; /* Adjust timing function as needed */
+  animation-iteration-count: 1; /* Play animation once */
+}
+.animate-custom-3 {
+  animation-name: customAnimation;
+  opacity: 0;
+  animation-delay: 1s;
+  animation-duration: 1.5s; /* Adjust duration as needed */
+  animation-timing-function: ease-in-out; /* Adjust timing function as needed */
+  animation-iteration-count: 1; /* Play animation once */
+}
+
+
+
+@keyframes customAnimation {
+  0% {
+      opacity: 0;
+  }
+  50% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+  }
+}
+
+
+.animate-item-1 {
+  animation: custom-animation 1s ease-in-out;
+  animation-iteration-count: 1;
+  animation-delay: 0.1s;
+}
+
+.animate-item-2 {
+  animation: custom-animation 1s ease-in-out;
+  animation-iteration-count: 1;
+  animation-delay: 0.5s;
+}
+
+.animate-item-3 {
+  animation: custom-animation 1.5s ease-in-out;
+  animation-iteration-count: 1;
+  animation-delay: 1s;
+}
+@keyframes custom-animation {
+  0% {
+    width: auto;
+    height: auto;
+    background-color: white;
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.7;
+    width: auto;
+    height: auto;
+    background-color: #f3f2ee;
+  }
+  100% {
+    width: auto;
+    height: auto;
+    background-color: #f3f2ee;
+    opacity: 1;
+  }
 }

@@ -236,7 +236,6 @@ export function BlankGuess(){
     )
 }
 
-
 export function Logo(){
     return (
         <svg width="23" height="28" viewBox="0 0 23 28" fill="none" xmlns="http://www.w3.org/2000/svg">
