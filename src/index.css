@@ -72,11 +72,18 @@ body{
   color: white !important;
 }
 
+.blue-border {
+  border: 2px solid #174fbb;
+
+}
 .completed-blue-head{
   background-color: #174fbb !important;
   color: white !important;
 }
 
+.wdt{
+  width: 100%;
+}
 
 .custom-button {
   background-image: linear-gradient(to right, #1E40AF, #3B82F6, #1E40AF);

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import PlayerCol from "./PlayerCol"
 import KeyBoard from "./KeyBoard"
 import { PLAYERS } from '../assets/players';
@@ -10,6 +10,7 @@ import { CountryFlag } from "../utils/TeamDesign";
 import { FaHeart, FaMagnifyingGlass } from "react-icons/fa6";
 import GameCompleted from "./GameCompleted";
 import GameLost from "./GameLost";
+import html2canvas from 'html2canvas';
 const Game = () => {
   const [inputValue, setInputValue] = useState('');
   const [store, setStore] = useState({
@@ -43,7 +44,7 @@ const Game = () => {
   ]
   
   useEffect(() => {
-    checkLocalStorage(store, setStore, data, setData, setGameOver, setGameCompleted);
+    checkLocalStorage(store, setStore, data, setData, setGameCompleted, setGameOver);
   },[])
 
   function toggleHint() {
@@ -110,6 +111,20 @@ const Game = () => {
     }
   }
 
+  const handleScreenshot = async () => {
+    try {
+        const screenElement = document.getElementById('screen');
+        if (!screenElement) return;
+
+        const canvas = await html2canvas(screenElement);
+        const imageUrl = canvas.toDataURL('image/png');
+
+        // Open image in new tab for the user to save or share
+        window.open(imageUrl);
+    } catch (error) {
+        console.error('Error capturing screenshot:', error);
+    }
+};
 
   const animate = (val) => {
     if (val === '') return null; // Return null if val is empty
@@ -155,7 +170,7 @@ const Game = () => {
 
     { gameCompleted? (
       <>
-        <GameCompleted data={data} />
+        <GameCompleted data={data} handleScreenshot={handleScreenshot} />
       </>
     ) : gameOver ? (
       <>

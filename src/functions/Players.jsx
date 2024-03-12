@@ -1,5 +1,8 @@
 import { PLAYERS } from "../assets/players"; 
 
+const date = new Date();
+const curDate = date.getDate();
+
 export async function checkLocalStorage(store, setStore, data, setData, setGameCompleted, setGameOver) {
     const fullDate = new Date();
     const date = fullDate.getDate();
@@ -8,12 +11,14 @@ export async function checkLocalStorage(store, setStore, data, setData, setGameC
     if(lastPlayed == date){
         console.log('Welcome back');
         const temp = JSON.parse(localStorage.getItem('stat'));
-        if(!temp) localStorage.setItem('stat', JSON.stringify(data));
+        if(!temp) localStorage.setItem('stat' , JSON.stringify(data));
 
-        const gc = localStorage.getItem('gameCompleted');
+        const gc = JSON.parse(localStorage.getItem('gameCompleted'));
+        if(gc === true) setGameCompleted(true);
         if(!gc) localStorage.setItem('gameCompleted', false)
 
-        const go = localStorage.getItem('gameOver'); 
+        const go = JSON.parse(localStorage.getItem('gameOver'));
+        if(go === true) setGameOver(true);
         if(!go) localStorage.setItem('gameOver', false)
     } else {
         localStorage.removeItem('store')
@@ -46,31 +51,32 @@ export function updateStorePlayer(i, check, key, store, setStore) {
 
 export async function checkStat(store, data, setData, setGameOver, setGameCompleted) {
     const newData = JSON.parse(localStorage.getItem('stat'));
-    if(!newData) return;
     const newStat = {...newData};
     if(store.lives <= 0) {
+        await setGameOver(true);
+        await localStorage.setItem('gameOver', true);
         newStat.totalGames += 1;
-        setGameOver(true);
-        localStorage.setItem('gameOver', 'true');
-        return;
-    }
-    console.log(store.players.every((player) => player.playerName !== ''))
-    if(store.players.every((player) => player.playerName !== '')) {
-        console.log('Game Completed');
+    } else if(store.players[0].playerName !== '' && store.players[1].playerName !== '' && store.players[2].playerName !== '' && store.players[3].playerName !== '') {
+        await setGameCompleted(true);
+        await localStorage.setItem('gameCompleted', true);
         newStat.totalWins += 1;
         newStat.totalGames += 1;
-        setGameCompleted(true);
-        localStorage.setItem('gameCompleted', 'true');
-        return;
+        if(curDate === (newStat.lastPlayed + 1)) {
+            newStat.streak += 1;
+            newStat.lastPlayed = curDate;
+        } else {
+            newStat.streak = 1;
+            newStat.lastPlayed = curDate;
+        }
     }
-    setData(newStat);
-    localStorage.setItem('stat', JSON.stringify(newStat));
+    await setData(newStat);
+    await localStorage.setItem('stat', JSON.stringify(newStat));
+
 }
 
 export function compare(val, hero, store, setStore, data, setData ,gameCompleted, gameOver, setGameOver, setGameCompleted) {
     const check = PLAYERS.find((player) => player.playerName.toLowerCase() === val.playerName.toLowerCase());
     if(!check) return;
-    checkStat(store, data, setData, setGameOver, setGameCompleted);
     let flag = false;
     for(let i=0; i<4; i++){
         if(hero[i].team.toLowerCase() === check.team.toLowerCase()) {
@@ -87,13 +93,13 @@ export function compare(val, hero, store, setStore, data, setData ,gameCompleted
             updateStorePlayer(i, check, 'playerName', store, setStore);
         }
     }
-
     if(flag) {
         // incrementLife(store, setStore);
         flag = false;
     } else {
         updateLife(store, setStore);
     }
-
+    
+    checkStat(store, data, setData, setGameOver, setGameCompleted);
     localStorage.setItem('store', JSON.stringify(store));
 }
