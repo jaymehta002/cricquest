@@ -8,7 +8,7 @@ const GameCompleted = ({ data, handleScreenshot }) => {
     setCopied(true);
     setTimeout(() => {
       setCopied(false);
-    }, 2000); // Hide the prompt after 2 seconds
+    }, 2000); 
   };
 
   return (
