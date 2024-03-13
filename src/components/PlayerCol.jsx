@@ -41,7 +41,7 @@ const playerCol = ({index, hero, player, hintMode, revealHint, mask}) => {
       <div className={`grid h-full text-xs ${mask && player.Age == '' ? 'animate-item-2' : ''} ${hintMode && player.age === '' ? 'animate-pulse' : ''}`} onClick={hintMode ? () => revealHint(index, 'age', hero) : () => {}}>
         <div className='flex flex-col items-center justify-center'>
           {player.age ? (
-            <p className='my-2'>
+            <p className='mt-3 mb-1'>
               <span className='font-luckiest-guy age my-3 text-5xl'>{player.age}</span>
             </p>
           ) :(

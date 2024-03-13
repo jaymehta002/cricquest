@@ -33,10 +33,10 @@ const NavBar = () => {
     <nav className="bg-design-white shadow-lg">
       <div className="md:max-w-4xl mx-auto px-4 py-3">
         <div className="flex justify-between items-center">
-            <Link to='/'>
-          <div className="flex items-center">
+            <Link to='/' className='no-underline'>
+          <div className="flex no-underline items-center">
             <img className="h-8 mr-2" src="/Logosplash.svg" alt="Logo" />
-            <span className="design-text-black font-inter text-2xl font-semibold">Cricquest</span>
+            <p className="design-text-black no-underline font-inter text-2xl font-semibold">Cricquest</p>
           </div>
             </Link>
           <div className="flex items-center space-x-4">

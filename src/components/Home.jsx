@@ -37,11 +37,11 @@ const Home = () => {
         </button>
       </Link>
       {/* <a to="#about" className="font-inter design-text-black hover:cursor-auto font-bold"> How to play?</a> */}
-      <a href="#about" className="font-inter design-text-black font-bold">How to play?</a>
+      <a href="#about" className="font-inter no-underline design-text-black font-bold">How to play?</a>
     </div>
   </div>
 </div>
-        <section id="about font-inter">
+        <section id="about" className="font-inter">
 
         <Card />
 
