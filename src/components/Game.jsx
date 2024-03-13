@@ -219,6 +219,12 @@ const Game = () => {
     if (key === "GUESS") return false;
     if (key === "HINT") return false;
     if (key === "DEL") return false;
+    if (key === "SPACE") {
+      const comb = (inputValue + " ").toLowerCase();
+      return !PLAYERS.some((player) =>
+        player.playerName.toLowerCase().includes(comb)
+      );
+    }
     const combination = (inputValue + key).toLowerCase();
     const contains = PLAYERS.some((player) =>
       player.playerName.toLowerCase().includes(combination)
@@ -236,8 +242,8 @@ const Game = () => {
               <Franchise team={val.team} />
               <p className="design-text-black">{val.team}</p>
             </span>
-            <span className="animate-custom-2">
-              <p className="font-luckiest-guy age text-4xl">{val.age}</p>
+            <span className="animate-custom-2 mt-3">
+              <p className="font-luckiest-guy age text-5xl">{val.age}</p>
             </span>
             <span className="mt-2 animate-custom-3">
               <CountryFlag country={val.nation} />
@@ -250,7 +256,7 @@ const Game = () => {
         ) : attempt && !correct ? (
           <div className="text-center">Incorrect attempt</div>
         ) : (
-          ""
+          <p>{store.lives} Lives left</p>
         )}
       </>
     );

@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 const GameLost = ({ data, handleScreenshot }) => {
     const [copied, setCopied] = useState(false);
 
