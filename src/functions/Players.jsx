@@ -3,12 +3,14 @@ import { PLAYERS } from "../assets/players";
 const date = new Date();
 const curDate = date.getDate();
 
-export async function checkLocalStorage(store, setStore, data, setData, setGameCompleted, setGameOver) {
+export async function checkLocalStorage(store, setStore, data, setData, setGameCompleted, setGameOver, setGuessed) {
     const fullDate = new Date();
     const date = fullDate.getDate();
     const lastPlayed = localStorage.getItem('lastPlayed');
     if(lastPlayed == date){
-        console.log('Welcome back');
+        const guess = JSON.parse(localStorage.getItem('guessed'));
+        if(!guess) localStorage.setItem('guessed', JSON.stringify([]));
+        await setGuessed(guess);
         const temp = JSON.parse(localStorage.getItem('stat'));
         if(!temp) localStorage.setItem('stat' , JSON.stringify(data));
         await setData(temp);
@@ -26,6 +28,7 @@ export async function checkLocalStorage(store, setStore, data, setData, setGameC
         const newStore = JSON.parse(newData);
         setStore(newStore);
     } else {
+        localStorage.setItem('guessed', JSON.stringify([]));
         localStorage.removeItem('store')
         localStorage.removeItem('gameCompleted');
         localStorage.removeItem('gameOver');

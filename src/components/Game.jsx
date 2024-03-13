@@ -11,6 +11,7 @@ import { FaHeart, FaMagnifyingGlass } from "react-icons/fa6";
 import GameCompleted from "./GameCompleted";
 import GameLost from "./GameLost";
 const Game = () => {
+  const [gameNumber, setGameNumber] = useState(1);
   const [inputValue, setInputValue] = useState('');
   const [store, setStore] = useState({
     players: [
@@ -49,7 +50,7 @@ const Game = () => {
   ]
   
   useEffect(() => {
-    checkLocalStorage(store, setStore, data, setData, setGameCompleted, setGameOver);
+    checkLocalStorage(store, setStore, data, setData, setGameCompleted, setGameOver, setGuessed);
   },[])
 
   function toggleHint() {
@@ -98,7 +99,7 @@ const Game = () => {
       setShowPlayer(true);
       setMask(true);
       setAnimationValue(val);
-      guessed.push(val);
+      guessed.push(val.playerName);
       setGuessed(guessed);
       localStorage.setItem('guessed', JSON.stringify(guessed));
       compare(val, hero, store, setStore, data, setData, gameCompleted, gameOver, setGameOver, setGameCompleted, setCorrect);
@@ -114,7 +115,7 @@ const Game = () => {
   }
   const handleSuggestions = () => {
     const input = inputValue.toLowerCase();
-    const suggestions = PLAYERS.filter((player) => player.playerName.toLowerCase().includes(input) && !guessed.includes(player));
+    const suggestions = PLAYERS.filter((player) => player.playerName.toLowerCase().includes(input) && !guessed.includes(player.playerName));
     return suggestions[0]? suggestions[0] : null;
   }
 
@@ -161,7 +162,7 @@ const Game = () => {
       statusText += '\n';
   }
 
-  const finalText = `cricquest #1\nI have completed the game with ${store.lives} lives left.\n${statusText}\n${data.playerGuessed} of 4 - players found.\n${3-store.hintsLeft} - Hints Used.\nplay now at https://cric-quest.vercel.app/`;
+  const finalText = `cricquest #${gameNumber}\nI have completed the game with ${store.lives} lives left.\n${statusText}\n${data.playerGuessed} of 4 - players found.\n${3-store.hintsLeft} - Hints Used.\nplay now at https://cric-quest.vercel.app/`;
 
   navigator.clipboard.writeText(finalText)
         .then(() => {

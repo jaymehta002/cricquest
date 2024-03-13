@@ -1,9 +1,20 @@
-import React from 'react';
-
 const GameLost = ({ data, handleScreenshot }) => {
+    const [copied, setCopied] = useState(false);
+
+    const handleClick = () => {
+        handleScreenshot();
+        setCopied(true);
+        setTimeout(() => {
+            setCopied(false);
+        }, 2000); // Hide the prompt after 2 seconds
+    };
+
     return (
         <div className="flex flex-col justify-center items-center">
-            <button onClick={handleScreenshot} className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 mt-8">Challenge Your Friend</button>
+            {copied && (
+                <div className="bg-green-200 text-green-700 p-2 rounded mb-4">Text copied to clipboard!</div>
+            )}
+            <button onClick={handleClick} className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 mt-8">Challenge Your Friend</button>
             <div className="bg-design-white rounded-lg p-8 mb-8">
                 <h1 className="text-2xl font-bold text-center text-gray-800 mb-4">Oh no! You've lost the game.</h1>
                 <div className="grid grid-cols-4 lg:grid-cols-4 gap-4">
