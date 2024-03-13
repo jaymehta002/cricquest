@@ -58,7 +58,7 @@ export async function checkStat(store, data, setData, setGameOver, setGameComple
     const count = store.players.filter((player) => player.playerName !== '').length;
     newStat.playerGuessed = count;
     console.log(count);
-    if(store.lives <= 0) {
+    if(store.lives < 1) {
         await setGameOver(true);
         await localStorage.setItem('gameOver', true);
         newStat.totalGames += 1;
