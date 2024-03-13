@@ -83,7 +83,7 @@ const Game = () => {
       const val = handleSuggestions();
       setTimeout(() => {
         setEnterPressed(false);
-      }, 3000);
+      }, 2200);
       setTimeout(() => {
         setShowPlayer(false);
         setAttempt(true);
@@ -252,11 +252,9 @@ const Game = () => {
             {/* </div> : attempt ? correct ? <span> {store.lives} lives left </span> : <div className="text-center">Incorrect attempt</div> : ''} */}
           </div>
         ) : attempt && correct ? (
-          <div className="text-center">{store.lives} Live left</div>
-        ) : attempt && !correct ? (
+          <div className="text-center">{store.lives} Lives left</div>
+        ) : attempt && !correct && (
           <div className="text-center">Incorrect attempt</div>
-        ) : (
-          <p>{store.lives} Lives left</p>
         )}
       </>
     );

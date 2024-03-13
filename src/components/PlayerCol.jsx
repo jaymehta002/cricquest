@@ -12,7 +12,7 @@ const playerCol = ({ index, hero, player, hintMode, revealHint, mask }) => {
   return (
     <>
       <div
-        className={`grid grid-col-1 gap-1 text-center w-28 h-[420] font-inter font-bold design-border rounded-xl ${
+        className={`grid grid-col-1 gap-1 text-center w-28 h-[400] font-inter font-bold design-border rounded-xl ${
           player.playerName
             ? "completed-blue-bg blue-border"
             : "bg-design-white"
@@ -80,7 +80,7 @@ const playerCol = ({ index, hero, player, hintMode, revealHint, mask }) => {
 
         <div
           className={`grid h-16 text-xs ${
-            mask && player.Age == "" ? "animate-item-2" : ""
+            mask && player.age == "" ? "animate-item-2" : ""
           } ${hintMode && player.age === "" ? "animate-pulse" : ""}`}
           onClick={hintMode ? () => revealHint(index, "age", hero) : () => {}}
         >
