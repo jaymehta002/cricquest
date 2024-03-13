@@ -3,6 +3,22 @@ import { PLAYERS } from "../assets/players";
 const date = new Date();
 const curDate = date.getDate();
 
+export function generatePlayers(){
+    const players = [];
+
+    for(let i=31; i<35; i+=2){
+        const idx1 = ((((curDate)*11)*17*i))%PLAYERS.length;
+        const idx2 = ((((curDate)*23)*29*i))%PLAYERS.length;
+        const a1 = PLAYERS[idx1];
+        const a2 = PLAYERS[idx2];
+        players.push(a1);
+        players.push(a2);
+    }
+    return players;
+
+}
+
+
 export async function checkLocalStorage(store, setStore, data, setData, setGameCompleted, setGameOver, setGuessed) {
     const fullDate = new Date();
     const date = fullDate.getDate();
@@ -12,6 +28,7 @@ export async function checkLocalStorage(store, setStore, data, setData, setGameC
         if(!guess) localStorage.setItem('guessed', JSON.stringify([]));
         await setGuessed(guess);
         const temp = JSON.parse(localStorage.getItem('stat'));
+        console.log(temp);
         if(!temp) localStorage.setItem('stat' , JSON.stringify(data));
         await setData(temp);
 

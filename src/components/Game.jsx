@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import PlayerCol from "./PlayerCol";
 import KeyBoard from "./KeyBoard"
 import { PLAYERS } from '../assets/players';
-import { compare } from '../functions/Players';
+import { compare, generatePlayers } from '../functions/Players';
 import { checkLocalStorage } from "../functions/Players";
 import { updateStorePlayer } from "../functions/Players";
 import { Franchise } from "../utils/design";
@@ -43,13 +43,9 @@ const Game = () => {
   const [animationValue, setAnimationValue] = useState('');
   const [warning, setWarning] = useState(false);
   const [correct, setCorrect] = useState(false);
-  const hero = [
-    PLAYERS[0],
-    PLAYERS[1],
-    PLAYERS[2],
-    PLAYERS[33]
-  ]
-  
+
+  const hero = generatePlayers();
+
   useEffect(() => {
     checkLocalStorage(store, setStore, data, setData, setGameCompleted, setGameOver, setGuessed);
   },[])
