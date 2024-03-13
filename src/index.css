@@ -19,22 +19,33 @@ body{
   background-color: #f3f2ee;
 }
 
-@media screen and (min-width: 424px) and (max-width: 474px) {
-  /* Write your CSS rules here */
+/* @media screen and (min-width: 424px) and (max-width: 474px) {
   .equal{
     margin-bottom: 1rem;
   }
   .eq {
     margin-bottom: 1rem;
   }
+} */
 
-}
-
-@media screen and (max-width: 399px) {
+@media screen and (max-width: 445px) {
   /* Write your CSS rules here */
   .bot{
     margin-bottom: 1rem;
   } 
+  .eq{
+    margin-bottom: 1rem;
+  }
+}
+
+@media screen and (max-width: 392px){
+  /* Write your CSS rules here */
+  .bot{
+    margin-bottom: 1rem;
+  } 
+  .eq{
+    margin-bottom: 0rem;
+  }
 }
 
 
@@ -114,6 +125,10 @@ body{
 
 .hint-key:hover{
   background-color: #4d4d4d !important;
+}
+
+.kbd{
+  margin: 2px;
 }
 
 .custom-button:hover {

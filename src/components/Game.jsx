@@ -41,6 +41,7 @@ const Game = () => {
   const [attempt, setAttempt] = useState(false);
   const [mask, setMask] = useState(false);
   const [animationValue, setAnimationValue] = useState('');
+  const [warning, setWarning] = useState(false);
   const [correct, setCorrect] = useState(false);
   const hero = [
     PLAYERS[0],
@@ -116,7 +117,16 @@ const Game = () => {
   const handleSuggestions = () => {
     const input = inputValue.toLowerCase();
     const suggestions = PLAYERS.filter((player) => player.playerName.toLowerCase().includes(input) && !guessed.includes(player.playerName));
-    return suggestions[0]? suggestions[0] : null;
+    if (suggestions.length > 0) {
+      return suggestions[0];
+    } else {
+      setTimeout(() => {
+        setWarning(false);
+      }, 1000);
+      setWarning(true);
+      setInputValue('')
+      return null;
+    }
   }
 
   const displaySuggestion = () => {

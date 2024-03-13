@@ -21,7 +21,7 @@ const playerCol = ({index, hero, player, hintMode, revealHint, mask}) => {
             ) : hero.role === 'AR' ? (
               <>
                 <AllRounder />
-                <span className=''>ALL ROUNDER</span>
+                <span className='eq'>ALL ROUNDER</span>
               </>
             ) : (
               <>
