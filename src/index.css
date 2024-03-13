@@ -38,7 +38,7 @@ body{
   }
 }
 
-@media screen and (max-width: 392px){
+@media screen and (max-width: 393px){
   /* Write your CSS rules here */
   .bot{
     margin-bottom: 1rem;
