@@ -34,7 +34,6 @@ export async function checkLocalStorage(
     if (!guess) localStorage.setItem("guessed", JSON.stringify([]));
     await setGuessed(guess);
     const temp = JSON.parse(localStorage.getItem("stat"));
-    console.log(temp, "temp>>>>>>>>");
     if (!temp) {
       localStorage.setItem("stat", JSON.stringify(data));
     } else {
@@ -80,7 +79,6 @@ export function updateStorePlayer(i, check, key, store, setStore) {
 export async function checkStat(store, setData, setGameOver, setGameCompleted) {
   const newData = JSON.parse(localStorage.getItem("stat"));
   const newStat = { ...newData };
-  console.log(newStat, "newstat>>>>>>>");
   const count = store.players.filter(
     (player) => player.playerName !== ""
   ).length;
@@ -107,7 +105,6 @@ export async function checkStat(store, setData, setGameOver, setGameCompleted) {
       newStat.lastPlayed = curDate;
     }
   }
-  console.log(newStat);
   await setData(newStat);
   await localStorage.setItem("stat", JSON.stringify(newStat));
 }
