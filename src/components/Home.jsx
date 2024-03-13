@@ -29,7 +29,7 @@ const Home = () => {
     <div className="z-10 flex flex-col items-center justify-center h-full relative">
       <img src='/Logosplash.svg' alt="Logo" className="md:w-56 w-48 mx-auto md:mb-8" />
 
-      <h1 className="text-3xl md:mt-0 md:mt-64 lg:text-5xl design-text-black font-bold mb-1 text-white text-center">Welcome to CricQuest</h1>
+      <h1 className="text-3xl  lg:text-5xl design-text-black font-bold mb-1 text-white text-center">Welcome to CricQuest</h1>
       <p className="text-lg lg:text-xl font-inter font-semibold text-blue-500 mb-4 text-center">A fun guessing game of cricket players for this IPL season</p>
       <Link to="/play">
         <button className="custom-button mb-2">

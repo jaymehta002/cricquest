@@ -20,17 +20,17 @@ export async function checkLocalStorage(store, setStore, data, setData, setGameC
         const go = JSON.parse(localStorage.getItem('gameOver'));
         if(go === true) setGameOver(true);
         if(!go) localStorage.setItem('gameOver', false)
+
+        const newData = localStorage.getItem('store');
+        if(!newData) return;
+        const newStore = JSON.parse(newData);
+        setStore(newStore);
     } else {
         localStorage.removeItem('store')
         localStorage.removeItem('gameCompleted');
         localStorage.removeItem('gameOver');
         localStorage.setItem('lastPlayed', date);
     }
-    
-    const newData = localStorage.getItem('store');
-    if(!newData) return;
-    const newStore = JSON.parse(newData);
-    setStore(newStore);
 }
 
 export async function updateLife(store, setStore) {
@@ -52,6 +52,9 @@ export function updateStorePlayer(i, check, key, store, setStore) {
 export async function checkStat(store, data, setData, setGameOver, setGameCompleted) {
     const newData = JSON.parse(localStorage.getItem('stat'));
     const newStat = {...newData};
+    const count = store.players.filter((player) => player.playerName !== '').length;
+    newStat.playerGuessed = count;
+    console.log(count);
     if(store.lives <= 0) {
         await setGameOver(true);
         await localStorage.setItem('gameOver', true);
@@ -71,11 +74,11 @@ export async function checkStat(store, data, setData, setGameOver, setGameComple
     }
     await setData(newStat);
     await localStorage.setItem('stat', JSON.stringify(newStat));
-
 }
 
-export function compare(val, hero, store, setStore, data, setData ,gameCompleted, gameOver, setGameOver, setGameCompleted) {
+export async function compare(val, hero, store, setStore, data, setData ,gameCompleted, gameOver, setGameOver, setGameCompleted) {
     const check = PLAYERS.find((player) => player.playerName.toLowerCase() === val.playerName.toLowerCase());
+    
     if(!check) return;
     let flag = false;
     for(let i=0; i<4; i++){
@@ -96,16 +99,21 @@ export function compare(val, hero, store, setStore, data, setData ,gameCompleted
             flag = true;
             setTimeout(() => {
                 updateStorePlayer(i, check, 'playerName', store, setStore);
-            }, 2000);
+            }, 1500);
+            
         }
     }
+    
     if(flag) {
-        // incrementLife(store, setStore);
         flag = false;
     } else {
-        updateLife(store, setStore);
+        setTimeout(() => {
+            updateLife(store, setStore);
+        }, 1600);
     }
     
-    checkStat(store, data, setData, setGameOver, setGameCompleted);
+    setTimeout(() => {
+        checkStat(store, data, setData, setGameOver, setGameCompleted);
+    }, 1700)
     localStorage.setItem('store', JSON.stringify(store));
 }

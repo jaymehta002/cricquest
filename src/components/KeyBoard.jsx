@@ -36,7 +36,6 @@ const KeyBoard = ({ onKeyPress, }) => {
 
 KeyBoard.propTypes = {
     onKeyPress: PropTypes.func.isRequired,
-    data: PropTypes.object.isRequired
 };
 
 export default KeyBoard;

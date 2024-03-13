@@ -10,7 +10,6 @@ import { CountryFlag } from "../utils/TeamDesign";
 import { FaHeart, FaMagnifyingGlass } from "react-icons/fa6";
 import GameCompleted from "./GameCompleted";
 import GameLost from "./GameLost";
-import html2canvas from 'html2canvas';
 const Game = () => {
   const [inputValue, setInputValue] = useState('');
   const [store, setStore] = useState({
@@ -30,16 +29,18 @@ const Game = () => {
     totalGames:0,
     totalWins:0,
     streak:0,
+    playerGuessed: 0,
     curDate: '',
     lastPlayed: '',
   }); 
+  const [guessed, setGuessed] = useState([]);
   const [hintMode, setHintMode] = useState(false);
   const [isEnterPressed, setEnterPressed] = useState(false);
   const [showPlayer, setShowPlayer] = useState(false);
   const [attempt, setAttempt] = useState(false);
   const [mask, setMask] = useState(false);
   const [animationValue, setAnimationValue] = useState('');
-  const [hidePlayer, setHidePlayer] = useState(false);
+  const [correct, setCorrect] = useState(false);
   const hero = [
     PLAYERS[0],
     PLAYERS[1],
@@ -74,6 +75,7 @@ const Game = () => {
       setInputValue((prevInputValue) => prevInputValue + ' ');
     } else if (key === 'GUESS') {
       if(inputValue === '') return;
+      const val = handleSuggestions();
       setTimeout(() => {
         setEnterPressed(false);
       }, 3000);
@@ -87,12 +89,19 @@ const Game = () => {
       setTimeout(() => {
         setMask(false);
       }, 2000)
+      if(val.playerName === hero[0].playerName || val.playerName === hero[1].playerName || val.playerName === hero[2].playerName || val.playerName === hero[3].playerName) {
+        setTimeout(() => {
+          setCorrect(true);
+        }, 1000);
+      }
       setEnterPressed(true);
       setShowPlayer(true);
       setMask(true);
-      const val = handleSuggestions();
       setAnimationValue(val);
-      compare(val, hero, store, setStore, data, setData, gameCompleted, gameOver, setGameOver, setGameCompleted);
+      guessed.push(val);
+      setGuessed(guessed);
+      localStorage.setItem('guessed', JSON.stringify(guessed));
+      compare(val, hero, store, setStore, data, setData, gameCompleted, gameOver, setGameOver, setGameCompleted, setCorrect);
       console.log(store);
       setInputValue('');
     } else if (key === 'HINT') {
@@ -105,7 +114,7 @@ const Game = () => {
   }
   const handleSuggestions = () => {
     const input = inputValue.toLowerCase();
-    const suggestions = PLAYERS.filter((player) => player.playerName.toLowerCase().includes(input));
+    const suggestions = PLAYERS.filter((player) => player.playerName.toLowerCase().includes(input) && !guessed.includes(player));
     return suggestions[0]? suggestions[0] : null;
   }
 
@@ -128,24 +137,41 @@ const Game = () => {
   }
 
   const handleScreenshot = async () => {
-    setHidePlayer(true);
-    setTimeout(() => {
-        setHidePlayer(false);
-    }, 1000)
-    try {
-        await setTimeout(800);
-        const screenElement = document.getElementById('screen');
-        console.log(screenElement);
-        if (!screenElement) return;
-        const canvas = await html2canvas(screenElement);
-        console.log(canvas);
-        const imageUrl = await canvas.toDataURL('image/png');
-        window.open(imageUrl);
-        console.log('Screenshot captured:', imageUrl);
-    } catch (error) {
-        console.error('Error capturing screenshot:', error);
-    }
+    const val = store.players;
+    console.log(val)
+    let statusText = '';
+    for (let i = 0; i < 4; i++) {
+      for (let j = 0; j < 4; j++) {
+          if (val[j].playerName === '') {
+              if (val[j].team !== '' && i === 0) {
+                  statusText += '✅';
+              } else if (val[j].age !== '' && i === 1) {
+                  statusText += '✅';
+              } else if (val[j].nation !== '' && i === 2) {
+                  statusText += '✅';
+              } else {
+                  statusText += '⬜';
+              }
+              statusText += ' ';
+          } else {
+              statusText += '🟦';
+              statusText += ' ';
+          }
+      }
+      statusText += '\n';
+  }
+
+  const finalText = `cricquest #1\nI have completed the game with ${store.lives} lives left.\n${statusText}\n${data.playerGuessed} of 4 - players found.\n${3-store.hintsLeft} - Hints Used.\nplay now at https://cric-quest.vercel.app/`;
+
+  navigator.clipboard.writeText(finalText)
+        .then(() => {
+            console.log('Text copied to clipboard:\n',finalText);
+        })
+        .catch(err => {
+            console.error('Unable to copy text to clipboard:', err);
+        });
 };
+
 
 // function checkDisabled(key) {
 //   if(key === 'GUESS') return false;
@@ -173,11 +199,8 @@ const Game = () => {
           <CountryFlag country={val.nation} />
           <p className="design-text-black">{val.nation}</p>
         </span>
-        </div> : attempt ? <div className="text-center">Incorrect attempt</div> : <span> {store.lives} lives left </span>}
-        
-        {/* <div>
-          {store.lives} lives left
-        </div> */}
+        {/* </div> : attempt ? correct ? <span> {store.lives} lives left </span> : <div className="text-center">Incorrect attempt</div> : ''} */}
+        </div> : attempt && correct ? <div className="text-center">{store.lives} Live left</div> : attempt && !correct ? <div className="text-center">Incorrect attempt</div> : ''}
       </>
     );
   };
@@ -193,10 +216,10 @@ const Game = () => {
       <span className="bg-hint text-white flex flex-row items-center px-1 py-1 rounded-lg gap-1 font-inter font-semibold"> < FaHeart color='red'/> {store.lives}</span>
     </div> 
     <div id='screen' className="m-4 flex justify-center gap-1 items-center">
-        <PlayerCol index={0} hero={hero[0]} player={store.players[0]} hintMode={hintMode} revealHint={revealHint} mask={mask} hidePlayer={hidePlayer}/>
-        <PlayerCol index={1} hero={hero[1]} player={store.players[1]} hintMode={hintMode} revealHint={revealHint} mask={mask} hidePlayer={hidePlayer}/>
-        <PlayerCol index={2} hero={hero[2]} player={store.players[2]} hintMode={hintMode} revealHint={revealHint} mask={mask} hidePlayer={hidePlayer}/>
-        <PlayerCol index={3} hero={hero[3]} player={store.players[3]} hintMode={hintMode} revealHint={revealHint} mask={mask} hidePlayer={hidePlayer}/>
+        <PlayerCol index={0} hero={hero[0]} player={store.players[0]} hintMode={hintMode} revealHint={revealHint} mask={mask}/>
+        <PlayerCol index={1} hero={hero[1]} player={store.players[1]} hintMode={hintMode} revealHint={revealHint} mask={mask}/>
+        <PlayerCol index={2} hero={hero[2]} player={store.players[2]} hintMode={hintMode} revealHint={revealHint} mask={mask}/>
+        <PlayerCol index={3} hero={hero[3]} player={store.players[3]} hintMode={hintMode} revealHint={revealHint} mask={mask}/>
     </div>
     </div>
     { gameCompleted? (
@@ -205,7 +228,7 @@ const Game = () => {
       </>
     ) : gameOver ? (
       <>
-        <GameLost data={data} />
+        <GameLost data={data} handleScreenshot={handleScreenshot} />
       </>
     ) : (
       <>
