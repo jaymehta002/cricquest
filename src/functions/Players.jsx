@@ -37,7 +37,7 @@ export async function checkLocalStorage(store, setStore, data, setData, setGameC
 }
 
 export async function updateLife(store, setStore) {
-    if(store.lives <= 0) return console.log('Game Over');
+    if(store.lives < 1) return console.log('Game Over');
     const newStore = {...store};
     newStore.lives -= 1;
     await setStore(newStore);
@@ -52,12 +52,11 @@ export function updateStorePlayer(i, check, key, store, setStore) {
     localStorage.setItem('store', JSON.stringify(store));
 }
 
-export async function checkStat(store, data, setData, setGameOver, setGameCompleted) {
+export async function checkStat(store, setData, setGameOver, setGameCompleted) {
     const newData = JSON.parse(localStorage.getItem('stat'));
     const newStat = {...newData};
     const count = store.players.filter((player) => player.playerName !== '').length;
     newStat.playerGuessed = count;
-    console.log(count);
     if(store.lives < 1) {
         await setGameOver(true);
         await localStorage.setItem('gameOver', true);
@@ -75,6 +74,7 @@ export async function checkStat(store, data, setData, setGameOver, setGameComple
             newStat.lastPlayed = curDate;
         }
     }
+    console.log(newStat);
     await setData(newStat);
     await localStorage.setItem('stat', JSON.stringify(newStat));
 }
@@ -116,7 +116,7 @@ export async function compare(val, hero, store, setStore, data, setData ,gameCom
     }
     
     setTimeout(() => {
-        checkStat(store, data, setData, setGameOver, setGameCompleted);
+        checkStat(store, setData, setGameOver, setGameCompleted);
     }, 1700)
     localStorage.setItem('store', JSON.stringify(store));
 }
