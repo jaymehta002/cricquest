@@ -86,7 +86,7 @@ const playerCol = ({ index, hero, player, hintMode, revealHint, mask }) => {
         >
           <div className="flex flex-col items-center justify-center">
             {player.age ? (
-              <p className="my-2 pt-1">
+              <p className="pt-2 pb-2">
                 <span className="font-luckiest-guy age my-3 text-5xl">
                   {player.age}
                 </span>

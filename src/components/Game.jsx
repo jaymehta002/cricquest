@@ -272,14 +272,14 @@ const Game = () => {
           <div className="flex flex-row gap-4 text-center items center">
             <span className="animate-custom-1">
               <Franchise team={val.team} />
-              <p className="design-text-black">{val.team}</p>
+              {/* <p className="design-text-black">{val.team}</p> */}
             </span>
-            <span className="animate-custom-2 mt-3">
-              <p className="font-luckiest-guy age text-5xl">{val.age}</p>
+            <span className="animate-custom-2">
+              <p className="font-luckiest-guy age text-5xl pt-1">{val.age}</p>
             </span>
             <span className="mt-2 animate-custom-3">
               <CountryFlag country={val.nation} />
-              <p className="design-text-black">{val.nation}</p>
+              {/* <p className="design-text-black">{val.nation}</p> */}
             </span>
             {/* </div> : attempt ? correct ? <span> {store.lives} lives left </span> : <div className="text-center">Incorrect attempt</div> : ''} */}
           </div>
