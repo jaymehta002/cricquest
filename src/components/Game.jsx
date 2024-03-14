@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import PlayerCol from "./PlayerCol";
+import {PLAYERS} from "../assets/players";
 import KeyBoard from "./KeyBoard";
 import { compare, generatePlayers } from "../functions/Players";
 import { checkLocalStorage } from "../functions/Players";
@@ -9,12 +10,8 @@ import { CountryFlag } from "../utils/TeamDesign";
 import { FaHeart, FaMagnifyingGlass } from "react-icons/fa6";
 import GameCompleted from "./GameCompleted";
 import GameLost from "./GameLost";
-import axios from "axios";
 const Game = () => {
   const [gameNumber, setGameNumber] = useState(1);
-  const [PLAYERS, setPLAYERS] = useState([]);
-  const [easyPlayers, setEasyPlayers] = useState([]);
-  const [hardPlayers, setHardPlayers] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [store, setStore] = useState({
     players: [
@@ -51,17 +48,6 @@ const Game = () => {
   const fetchCounterValue = async () => {
     try {
       const response = await fetch('https://cricquest-backend.vercel.app');
-      const players = await axios.get('https://cricquest-backend.vercel.app/players');
-      const playersData = await players.data;
-      const easyPlayers = await axios.get('https://cricquest-backend.vercel.app/easyPlayers');
-      const easyPlayersData = await easyPlayers.data;
-      // console.log(easyPlayersData);
-      const hardPlayers = await axios.get('https://cricquest-backend.vercel.app/hardPlayers');
-      const hardPlayersData = await hardPlayers.data;
-      // console.log(hardPlayersData);
-      await setPLAYERS(playersData);
-      await setEasyPlayers(easyPlayersData);
-      await setHardPlayers(hardPlayersData);
       const data = await response.json();
       setGameNumber(data.value+1);
     } catch (error) {
@@ -75,7 +61,7 @@ const Game = () => {
     fetchCounterValue();
   }, []);
   
-  const hero = generatePlayers(easyPlayers, hardPlayers);
+  const hero = generatePlayers();
 
   useEffect(() => {
     checkLocalStorage(

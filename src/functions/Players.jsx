@@ -1,18 +1,26 @@
 import { PLAYERS } from "../assets/players";
+import list1 from '../assets/tier1.json';
+import list2 from '../assets/tier2.json';
 
 const date = new Date();
 const curDate = date.getDate();
 
-export function generatePlayers(easyPlayers, hardPlayers) {
+export function generatePlayers() {
   const players = [];
   for (let i = 31; i < 35; i += 2) {
-    const idx1 = (curDate * 11 * 17 * i) % PLAYERS.length;
-    const idx2 = (curDate * 23 * 29 * i) % PLAYERS.length;
-    const a1 = PLAYERS[idx1];
-    const a2 = PLAYERS[idx2];
-    players.push(a1);
-    players.push(a2);
+    const idx = (curDate * 11 * 17 * i) % list1.length;
+    players.push(list1[idx]);
+    // const idx2 = (curDate * 23 * 29 * i) % list2.length;
+    // const a1 = PLAYERS[idx1];
+    // const a2 = PLAYERS[idx2];
+    // players.push(a1);
+    // players.push(a2);
   }
+  for(let i = 71; i<75;  i+=2){
+    const idx = (curDate * 11 * 17 * i) % list2.length;
+    players.push(list2[idx])
+  }
+  // console.log(players);
   return players;
 }
 
