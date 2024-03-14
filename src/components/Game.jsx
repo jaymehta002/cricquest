@@ -10,7 +10,6 @@ import { FaHeart, FaMagnifyingGlass } from "react-icons/fa6";
 import GameCompleted from "./GameCompleted";
 import GameLost from "./GameLost";
 import axios from "axios";
-import { Await } from "react-router-dom";
 const Game = () => {
   const [gameNumber, setGameNumber] = useState(1);
   const [PLAYERS, setPLAYERS] = useState([]);
@@ -297,7 +296,7 @@ const Game = () => {
   return (
     <div className="bg-design-white font-inter mt-4">
       <div>
-        <div className="flex justify-center flex-row font-inter gap-9 md:gap-12 lg:gap-16 xl:gap-24 2xl:gap-32 px-4 text-center items-center mb-1">
+        <div className="flex justify-center flex-row font-inter gap-9 md:gap-12 lg:gap-16 xl:gap-24 2xl:gap-24 px-4 text-center items-center mb-1">
           <span className="bg-hint text-white flex flex-row items-center px-1 py-1 rounded-lg gap-1 font-inter font-semibold">
             {" "}
             <FaMagnifyingGlass color="yellow" /> {store.hintsLeft}
