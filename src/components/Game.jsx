@@ -234,7 +234,7 @@ const Game = () => {
       data.playerGuessed
     } of 4 - players found.\n${
       3 - store.hintsLeft
-    } - Hints Used.\nplay now at https://cric-quest.vercel.app/`;
+    } - Hints Used.\nplay now at https://cricquest.in/`;
 
     navigator.clipboard
       .writeText(finalText)
