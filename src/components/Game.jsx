@@ -310,7 +310,7 @@ const Game = () => {
             <FaHeart color="red" /> {store.lives}
           </span>
         </div>
-        <div id="screen" className="m-4 flex justify-center gap-1 items-center">
+        <div id="screen" className=" mx-2 flex justify-center gap-1 items-center">
           <PlayerCol
             index={0}
             hero={hero[0]}
@@ -356,7 +356,7 @@ const Game = () => {
       ) : (
         <>
           <div className="flex justify-center gap-1 items-center">
-            <span className="text-xl py-10 font-bold">
+            <span className="text-xl py-4 font-bold">
               {isEnterPressed && animate(animationValue)}
               {inputValue
                 ? displaySuggestion()
