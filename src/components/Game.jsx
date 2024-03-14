@@ -274,7 +274,7 @@ const Game = () => {
               <Franchise team={val.team} />
               {/* <p className="design-text-black">{val.team}</p> */}
             </span>
-            <span className="animate-custom-2">
+            <span className="animate-custom-2 md:pt-0 pt-4">
               <p className="font-luckiest-guy age text-5xl pt-1">{val.age}</p>
             </span>
             <span className="mt-2 animate-custom-3">
