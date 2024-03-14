@@ -3,9 +3,8 @@ import { PLAYERS } from "../assets/players";
 const date = new Date();
 const curDate = date.getDate();
 
-export function generatePlayers() {
+export function generatePlayers(easyPlayers, hardPlayers) {
   const players = [];
-
   for (let i = 31; i < 35; i += 2) {
     const idx1 = (curDate * 11 * 17 * i) % PLAYERS.length;
     const idx2 = (curDate * 23 * 29 * i) % PLAYERS.length;
@@ -83,7 +82,7 @@ export async function checkStat(store, setData, setGameOver, setGameCompleted) {
     (player) => player.playerName !== ""
   ).length;
   newStat.playerGuessed = count;
-  if (store.lives < 1) {
+  if (store.lives < 2) {
     await setGameOver(true);
     await localStorage.setItem("gameOver", true);
     newStat.totalGames += 1;

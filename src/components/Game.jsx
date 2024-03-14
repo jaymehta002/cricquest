@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import PlayerCol from "./PlayerCol";
 import KeyBoard from "./KeyBoard";
-import { PLAYERS } from "../assets/players";
 import { compare, generatePlayers } from "../functions/Players";
 import { checkLocalStorage } from "../functions/Players";
 import { updateStorePlayer } from "../functions/Players";
@@ -10,8 +9,13 @@ import { CountryFlag } from "../utils/TeamDesign";
 import { FaHeart, FaMagnifyingGlass } from "react-icons/fa6";
 import GameCompleted from "./GameCompleted";
 import GameLost from "./GameLost";
+import axios from "axios";
+import { Await } from "react-router-dom";
 const Game = () => {
   const [gameNumber, setGameNumber] = useState(1);
+  const [PLAYERS, setPLAYERS] = useState([]);
+  const [easyPlayers, setEasyPlayers] = useState([]);
+  const [hardPlayers, setHardPlayers] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [store, setStore] = useState({
     players: [
@@ -44,7 +48,35 @@ const Game = () => {
   const [warning, setWarning] = useState(false);
   const [correct, setCorrect] = useState(false);
 
-  const hero = generatePlayers();
+
+  const fetchCounterValue = async () => {
+    try {
+      const response = await fetch('https://cricquest-backend.vercel.app');
+      const players = await axios.get('https://cricquest-backend.vercel.app/players');
+      const playersData = await players.data;
+      const easyPlayers = await axios.get('https://cricquest-backend.vercel.app/easyPlayers');
+      const easyPlayersData = await easyPlayers.data;
+      // console.log(easyPlayersData);
+      const hardPlayers = await axios.get('https://cricquest-backend.vercel.app/hardPlayers');
+      const hardPlayersData = await hardPlayers.data;
+      // console.log(hardPlayersData);
+      await setPLAYERS(playersData);
+      await setEasyPlayers(easyPlayersData);
+      await setHardPlayers(hardPlayersData);
+      const data = await response.json();
+      setGameNumber(data.value+1);
+    } catch (error) {
+      console.error('Error fetching counter value:', error);
+    }
+  };
+
+  
+  
+  useEffect(() => {
+    fetchCounterValue();
+  }, []);
+  
+  const hero = generatePlayers(easyPlayers, hardPlayers);
 
   useEffect(() => {
     checkLocalStorage(
@@ -90,7 +122,7 @@ const Game = () => {
       }, 1600);
       setTimeout(() => {
         setAttempt(false);
-      }, 2500);
+      }, 2000);
       setTimeout(() => {
         setMask(false);
       }, 2000);
@@ -253,8 +285,10 @@ const Game = () => {
           </div>
         ) : attempt && correct ? (
           <div className="text-center">{store.lives} Lives left</div>
-        ) : attempt && !correct && (
+        ) : attempt ? (
           <div className="text-center">Incorrect attempt</div>
+        ) : (
+          <div className="text-center">{store.lives} Lives left</div>
         )}
       </>
     );
