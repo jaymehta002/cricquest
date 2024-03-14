@@ -29,6 +29,14 @@ const NavBar = () => {
     return () => clearTimeout(timer);
   });
 
+  const scrollAbout = () => {
+    const about = document.getElementById('about');
+    if (about) {
+      about.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.location.href = '/#about';
+    }
+  }
   return (
     <nav className="bg-design-white shadow-lg">
       <div className="md:max-w-4xl mx-auto px-4 py-3">
@@ -45,7 +53,7 @@ const NavBar = () => {
               {timeLeft.minutes.toString().padStart(2, '0')}:
               {timeLeft.seconds.toString().padStart(2, '0')}
             </div>
-            <button className="text-gray-500 hover:bg-gray-600 hover:text-white px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400">
+            <button onClick={scrollAbout} className="text-gray-500 bg-design-white hover:bg-gray-600 hover:text-white px-4 py-2 border-none rounded-md ">
               <i className="fas fa-question-circle"></i>
             </button>
           </div>

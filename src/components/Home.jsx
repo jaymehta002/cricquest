@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Card from "./Card";
 
 const Home = () => {
+
     return (
 
        <div className="bg-design-white">
