@@ -49,7 +49,7 @@ const Home = () => {
         </section>
         <footer className="design-text-black font-inter bg-design-white py-4 text-center">
             <p className="text-base no-underline font-semibold">© 2024 Cricquest.in. <Link className="no-underline" to='/privacy-policy'>All rights reserved.</Link> </p>
-            <p className="text-base font-semibold">contact us: <a className="font-inter no-underline text-black" href="mailto:cricquest@mail.info">cricquest@mail.info</a> </p>
+            <p className="text-base font-semibold">contact us: <a className="font-inter no-underline text-black" href="mailto:info@cricquest.in">info@cricquest.in</a> </p>
         </footer>
       </div> 
     );
