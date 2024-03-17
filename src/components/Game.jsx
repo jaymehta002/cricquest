@@ -207,11 +207,13 @@ const Game = () => {
       statusText += "\n";
     }
     
-    const finalText = `Can you guess all players?\n${statusText}${
+    const finalText = `My Today's CricCard\n${statusText}💡${
       data.playerGuessed
-    } of 4 - players guessed.\n${
+    } of 4 - players guessed.\n🧠${
+      15-store.lives
+    } - Guesses taken\n👀${
       3 - store.hintsLeft
-    } - Hints Used.\nplay now at https://cricquest.in/`;
+    } - Hints Used.\nShow us how many of today's players you can guess!\nplay now at cricquest.in\n #cricquest #ipl #cricket`;
       return finalText;
   };
 

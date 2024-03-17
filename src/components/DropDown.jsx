@@ -11,7 +11,8 @@ import { FacebookIcon, XIcon, WhatsappIcon } from "react-share"
 
 const DropDown = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const text = "Check out this IPL quiz game!";
+  const [prompt, setPrompt] = useState(false);
+  const text = "Dive into the excitement of IPL with CricQuest🏏. \nA fun online IPL trivia game. Show us how many of today's players you can guess!\nPlay now at ";
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -27,6 +28,15 @@ const DropDown = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(text);
+
+    setTimeout(() => {
+      setPrompt(false);
+    }, 1000);
+    setPrompt(true);
+  }
 
 
   return (
@@ -61,6 +71,21 @@ const DropDown = () => {
               <RedditShareButton url={"cricquest.in"} title={text}>
                 <RedditIcon size={32} round />
               </RedditShareButton>
+            </li>
+            <li>
+            <button onClick={handleCopy} className="px-4 py-2 rounded-full border-none outline-none bg-white m-1">
+            {prompt ? 
+            (
+            <svg className="h-6 w-6 text-green-500"  width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  
+              <path d="M9 5H7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2V7a2 2 0 0 0 -2 -2h-2" />  
+              <rect x="9" y="3" width="6" height="4" rx="2" />  
+              <path d="M9 14l2 2l4 -4" />
+              </svg>
+            ) :(<svg className="h-6 w-6 text-slate-500"  fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/>
+</svg>)
+}
+          </button>
             </li>
           </ul>
         </div>
