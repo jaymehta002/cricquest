@@ -1,30 +1,30 @@
 import React, { useState } from "react";
+import { FacebookShareButton, TwitterShareButton, WhatsappShareButton, XIcon, RedditShareButton } from 'react-share';
+import { FacebookIcon, WhatsappIcon, RedditIcon } from 'react-share';
 
 const GameCompleted = ({ data, handleScreenshot }) => {
-  const [copied, setCopied] = useState(false);
+  
+  const text = handleScreenshot()
 
-  const handleClick = () => {
-    handleScreenshot();
-    setCopied(true);
-    setTimeout(() => {
-      setCopied(false);
-    }, 2000); 
-  };
 
   return (
     <div className="flex font-inter flex-col justify-center items-center">
-      {copied && (
-        <div className="bg-green-200 text-green-700 p-2 rounded mb-4">
-          Text copied to clipboard!
-        </div>
-      )}
-      <button
-        onClick={handleClick}
-        className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-lg transition duration-300 ease-in-out transform hover:scale-105 mt-8"
-      >
-        Share Your Victory
-      </button>
-      <div className="bg-design-white  rounded-lg p-8 mb-8">
+      <p className=" text-black font-bold mb-4 px-8 rounded-lg transition duration-300 ease-in-out transform  mt-8">Challenge Your Friends</p>
+            <div className='flex flex-row gap-2'>
+                <TwitterShareButton url={'cricquest.in'} title={text}>
+                    <XIcon size={32} round />
+                </TwitterShareButton>
+                <FacebookShareButton url={'cricquest.in'} quote={text} description={text}>
+                  <FacebookIcon size={32} round />
+                </FacebookShareButton>
+                <WhatsappShareButton url={'cricquest.in'} title={text}>
+                  <WhatsappIcon size={32} round />
+                </WhatsappShareButton>
+                <RedditShareButton url={'cricquest.in'} title={text}>
+                    <RedditIcon size={32} round />
+                </RedditShareButton>
+            </div>
+      <div className="bg-design-white  rounded-lg p-5 mb-8">
         <h1 className="text-xl font-bold text-center text-gray-800 mb-4">
           Congratulations! You've completed the game.
         </h1>

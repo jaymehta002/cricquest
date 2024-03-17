@@ -1,9 +1,31 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import Dropdown from './DropDown';
+
 const NavBar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const iconsRef = useRef(null);
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (iconsRef.current && !iconsRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
+
+
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
-  // Function to calculate time left until the end of the day
   function calculateTimeLeft() {
     const now = new Date();
     const endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
@@ -37,26 +59,29 @@ const NavBar = () => {
       window.location.href = '/#about';
     }
   }
+
   return (
     <nav className="bg-design-white shadow-lg">
       <div className="md:max-w-4xl mx-auto px-4 py-3">
         <div className="flex justify-between items-center">
-            <Link to='/' className='no-underline'>
-          <div className="flex no-underline items-center">
-            <img className="h-8 mr-2" src="/Logosplash.svg" alt="Logo" />
-            <p className="design-text-black no-underline font-inter text-2xl font-semibold">Cricquest</p>
-          </div>
-            </Link>
-          <div className="flex items-center space-x-4">
-            <div className="text-gray-500 font-semibold">
-              {timeLeft.hours.toString().padStart(2, '0')}:
-              {timeLeft.minutes.toString().padStart(2, '0')}:
-              {timeLeft.seconds.toString().padStart(2, '0')}
+          <Link to='/' className='no-underline'>
+            <div className="flex no-underline items-center">
+              <img className="h-8 mr-2" src="/Logosplash.svg" alt="Logo" />
+              <p className="design-text-black no-underline font-inter text-2xl font-semibold">Cricquest</p>
             </div>
-            <button onClick={scrollAbout} className="text-gray-500 bg-design-white hover:bg-gray-600 hover:text-white px-4 py-2 border-none rounded-md ">
-              <i className="fas fa-question-circle"></i>
-            </button>
-          </div>
+          </Link>
+          <div className="flex items-center space-x-4">
+  <div className="text-gray-500 font-semibold">
+    {timeLeft.hours.toString().padStart(2, '0')}:
+    {timeLeft.minutes.toString().padStart(2, '0')}:
+    {timeLeft.seconds.toString().padStart(2, '0')}
+  </div>
+  <button onClick={scrollAbout} className="text-gray-500 bg-design-white  px-1 py-2 border-none rounded-md ">
+    <i className="fas fa-question-circle"></i>
+  </button>
+
+    <Dropdown />
+        </div>
         </div>
       </div>
     </nav>

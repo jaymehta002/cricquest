@@ -11,7 +11,6 @@ import { FaHeart, FaMagnifyingGlass } from "react-icons/fa6";
 import GameCompleted from "./GameCompleted";
 import GameLost from "./GameLost";
 const Game = () => {
-  const [gameNumber, setGameNumber] = useState(1);
   const [inputValue, setInputValue] = useState("");
   const [store, setStore] = useState({
     players: [
@@ -45,22 +44,7 @@ const Game = () => {
   const [correct, setCorrect] = useState(false);
 
 
-  const fetchCounterValue = async () => {
-    try {
-      const response = await fetch('https://cricquest-backend.vercel.app');
-      const data = await response.json();
-      setGameNumber(data.value+1);
-    } catch (error) {
-      console.error('Error fetching counter value:', error);
-    }
-  };
 
-  
-  
-  useEffect(() => {
-    fetchCounterValue();
-  }, []);
-  
   const hero = generatePlayers();
 
   useEffect(() => {
@@ -73,7 +57,16 @@ const Game = () => {
       setGameOver,
       setGuessed
     );
-  }, []);
+    checkLocalStorage(
+      store,
+      setStore,
+      data,
+      setData,
+      setGameCompleted,
+      setGameOver,
+      setGuessed
+    );
+  }, [])
 
   function toggleHint() {
     setHintMode((prevHintMode) => !prevHintMode);
@@ -190,7 +183,7 @@ const Game = () => {
     }
   };
 
-  const handleScreenshot = async () => {
+  const handleScreenshot = () => {
     const val = store.players;
     let statusText = "";
     for (let i = 0; i < 4; i++) {
@@ -213,23 +206,13 @@ const Game = () => {
       }
       statusText += "\n";
     }
-
-    const finalText = `cricquest #${gameNumber}\nI have completed the game with ${
-      store.lives
-    } lives left.\n${statusText}\n${
+    
+    const finalText = `Can you guess all players?\n${statusText}${
       data.playerGuessed
-    } of 4 - players found.\n${
+    } of 4 - players guessed.\n${
       3 - store.hintsLeft
     } - Hints Used.\nplay now at https://cricquest.in/`;
-
-    navigator.clipboard
-      .writeText(finalText)
-      .then(() => {
-        console.log("Text copied to clipboard:\n", finalText);
-      })
-      .catch((err) => {
-        console.error("Unable to copy text to clipboard:", err);
-      });
+      return finalText;
   };
 
   const checkDisabled = (key) => {
@@ -303,6 +286,7 @@ const Game = () => {
             hintMode={hintMode}
             revealHint={revealHint}
             mask={mask}
+            gameOver={gameOver}
           />
           <PlayerCol
             index={1}
@@ -311,6 +295,7 @@ const Game = () => {
             hintMode={hintMode}
             revealHint={revealHint}
             mask={mask}
+            gameOver={gameOver}
           />
           <PlayerCol
             index={2}
@@ -319,6 +304,7 @@ const Game = () => {
             hintMode={hintMode}
             revealHint={revealHint}
             mask={mask}
+            gameOver={gameOver}
           />
           <PlayerCol
             index={3}
@@ -327,6 +313,7 @@ const Game = () => {
             hintMode={hintMode}
             revealHint={revealHint}
             mask={mask}
+            gameOver={gameOver}
           />
         </div>
       </div>

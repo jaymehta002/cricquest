@@ -1,26 +1,15 @@
 import { PLAYERS } from "../assets/players";
-import list1 from '../assets/tier1.json';
-import list2 from '../assets/tier2.json';
 
 const date = new Date();
 const curDate = date.getDate();
+const curMonth = date.getMonth() + 1;
 
 export function generatePlayers() {
   const players = [];
-  for (let i = 31; i < 35; i += 2) {
-    const idx = (curDate * 11 * 17 * i) % list1.length;
-    players.push(list1[idx]);
-    // const idx2 = (curDate * 23 * 29 * i) % list2.length;
-    // const a1 = PLAYERS[idx1];
-    // const a2 = PLAYERS[idx2];
-    // players.push(a1);
-    // players.push(a2);
+  for (let i = 31; i < 39; i += 2) {
+    const idx = (curDate * curMonth * 19 * 17 * i) % PLAYERS.length;
+    players.push(PLAYERS[idx]);
   }
-  for(let i = 71; i<75;  i+=2){
-    const idx = (curDate * 11 * 17 * i) % list2.length;
-    players.push(list2[idx])
-  }
-  // console.log(players);
   return players;
 }
 
@@ -90,7 +79,7 @@ export async function checkStat(store, setData, setGameOver, setGameCompleted) {
     (player) => player.playerName !== ""
   ).length;
   newStat.playerGuessed = count;
-  if (store.lives < 2) {
+  if (store.lives < 1) {
     await setGameOver(true);
     await localStorage.setItem("gameOver", true);
     newStat.totalGames += 1;
