@@ -93,17 +93,17 @@ const Game = () => {
       const val = handleSuggestions();
       setTimeout(() => {
         setEnterPressed(false);
-      }, 2200);
+      }, 3500);
       setTimeout(() => {
         setShowPlayer(false);
         setAttempt(true);
-      }, 1600);
+      }, 2000);
       setTimeout(() => {
         setAttempt(false);
-      }, 2000);
+      }, 2500);
       setTimeout(() => {
         setMask(false);
-      }, 2000);
+      }, 2500);
       if (
         val.playerName === hero[0].playerName ||
         val.playerName === hero[1].playerName ||

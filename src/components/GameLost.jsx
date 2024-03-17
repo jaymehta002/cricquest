@@ -30,7 +30,7 @@ const GameLost = ({ data, handleScreenshot }) => {
                         <h2 className="text-xs font-semibold text-center text-gray-500 mb-2">GAMES <br />COMPLETED</h2>
                     </div>
                     <div className="flex flex-col items-center mb-4 lg:mb-0">
-                        <span className="text-2xl  font-bold text-red-500">{data.totalGames}</span>
+                        <span className="text-2xl  font-bold text-red-500">{data.playerGuessed}</span>
                         <h2 className="text-xs font-semibold text-center text-gray-500 mb-2">PLAYERS <br />FOUND</h2>
                     </div>
                     <div className="flex flex-col items-center mb-4 lg:mb-0">
