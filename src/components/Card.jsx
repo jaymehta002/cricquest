@@ -67,19 +67,21 @@ const Card = () => {
     ))}
     </div>
     
+                    
     <div id="about" className="block font-inter text-center md:hidden">
-        {cards.map((card, index) => (
-            <div key={index} className="hero mt-8 h-full bg-design-white">
-                <div className="hero-content flex-col gap-12">
-                        <h1 className="text-2xl design-text-black font-bold">{card.title}</h1>
-                    <img src={card.imgSrc} className="max-w-full shadow-2xl" />
-                    <div className="w-full">
-                        <p className="py-6 text-base design-text-black">{card.description}</p>
-                    </div>
+    {cards.map((card, index) => (
+        <div key={index} className="hero mt-8 h-full bg-design-white">
+            <div className="hero-content flex-col gap-4">
+                <h1 className="text-2xl design-text-black font-bold">{card.title}</h1>
+                <img src={card.imgSrc} className="max-w-full h-auto shadow-2xl" alt={card.title} />
+                <div className="w-full">
+                    <p className="py-4 text-base design-text-black">{card.description}</p>
                 </div>
             </div>
-        ))}
-    </div>
+        </div>
+    ))}
+</div>
+
 
     </>
     );

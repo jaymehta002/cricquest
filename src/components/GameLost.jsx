@@ -5,7 +5,7 @@ const GameLost = ({ data, handleScreenshot }) => {
     const [prompt, setPrompt] = useState(false);
     const text = handleScreenshot()
     const handleCopy = () => {
-        navigator.clipboard.writeText(text);
+        navigator.clipboard.writeText(text );
         setTimeout(() => {
             setPrompt(false);
         }, 1000);

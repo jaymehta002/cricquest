@@ -13,6 +13,7 @@ const DropDown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [prompt, setPrompt] = useState(false);
   const text = "Dive into the excitement of IPL with CricQuest🏏. \nA fun online IPL trivia game. Show us how many of today's players you can guess!\nPlay now at ";
+  const url = "cricquest.in";
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -30,7 +31,8 @@ const DropDown = () => {
   }, []);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(text);
+    const final = text + url;
+    navigator.clipboard.writeText(final);
 
     setTimeout(() => {
       setPrompt(false);

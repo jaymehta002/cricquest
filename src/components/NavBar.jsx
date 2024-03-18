@@ -67,7 +67,7 @@ const NavBar = () => {
           <Link to='/' className='no-underline'>
             <div className="flex no-underline items-center">
               <img className="h-8 mr-2" src="/Logosplash.svg" alt="Logo" />
-              <p className="design-text-black no-underline font-inter text-2xl font-semibold">Cricquest</p>
+              <p className="design-text-black no-underline font-inter text-2xl font-semibold">CricQuest</p>
             </div>
           </Link>
           <div className="flex items-center space-x-4">

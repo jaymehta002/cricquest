@@ -210,7 +210,7 @@ const Game = () => {
     const finalText = `My Today's CricCard\n${statusText}💡${
       data.playerGuessed
     } of 4 - players guessed.\n🧠${
-      15-store.lives
+      15 - store.lives
     } - Guesses taken\n👀${
       3 - store.hintsLeft
     } - Hints Used.\nShow us how many of today's players you can guess!\nplay now at cricquest.in\n #cricquest #ipl #cricket`;
@@ -268,10 +268,10 @@ const Game = () => {
     <div className="bg-design-white font-inter mt-4">
       <div>
         <div className="flex justify-center flex-row font-inter gap-9 md:gap-12 lg:gap-16 xl:gap-24 2xl:gap-24 px-4 text-center items-center mb-1">
-          <span className="bg-hint text-white flex flex-row items-center px-1 py-1 rounded-lg gap-1 font-inter font-semibold">
+          <div className="bg-hint text-white flex flex-row items-center px-1 py-1 rounded-lg gap-1 font-inter font-semibold">
             {" "}
             <FaMagnifyingGlass color="yellow" /> {store.hintsLeft}
-          </span>
+          </div>
           <span className="design-text-black text-xl">
             Find today&#39;s player
           </span>
@@ -336,7 +336,7 @@ const Game = () => {
                 ? displaySuggestion()
                 : isEnterPressed
                 ? ""
-                : "Exter text here.."}
+                : "Enter Player Name.."}
             </span>
           </div>
           <KeyBoard onKeyPress={handleKeyPress} checkDisabled={checkDisabled} />

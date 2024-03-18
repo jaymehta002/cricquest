@@ -13,7 +13,7 @@ const Home = () => {
 
     {/* Background image */}
     <div className="absolute inset-0">
-      <img src='/background.png' alt="Background" className="w-full h-full object-cover opacity-20 dark:opacity-10" />
+      <img src='/background.webp' alt="Background" className="w-full h-full object-cover opacity-20 dark:opacity-10" />
     </div>
 
     {/* Left image */}
@@ -28,7 +28,7 @@ const Home = () => {
 
     {/* Play button and content */}
     <div className="z-10 flex flex-col items-center justify-center h-full relative">
-      <img src='/Logosplash.svg' alt="Logo" className="md:w-56 w-48 mx-auto md:mb-8" />
+      <img src='/Logosplash.webp' alt="Logo" className="md:w-56 w-48 mx-auto md:mb-8" />
 
       <h1 className="text-3xl  lg:text-5xl design-text-black font-bold mb-1 text-white text-center">Welcome to CricQuest</h1>
       <p className="text-lg lg:text-xl font-inter font-semibold text-blue-500 mb-4 text-center">A fun guessing game of cricket players for this IPL season</p>
