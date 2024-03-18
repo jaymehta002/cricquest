@@ -20,9 +20,9 @@ const KeyBoard = ({ onKeyPress, checkDisabled }) => {
               <button
                 key={keyIndex}
                 onClick={() => onKeyPress(key)}
-                className={`kbd outline-none border-none border-2 p-3 bg-white font-inter font-bold hover:bg-gray-200 cursor-pointer design-text-black ${
+                className={`kbd outline-none border-none border-2 px-4 margen flex gap-1  py-1 bg-white font-inter font-bold hover:bg-gray-200 cursor-pointer design-text-black ${
                   key === "SPACE"
-                    ? "px-20 mx-1"
+                    ? "px-20 w-56 mx-1"
                     : key === "GUESS"
                     ? "guess-key px-1"
                     : key === "DEL"

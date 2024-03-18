@@ -127,9 +127,10 @@ body{
   background-color: #1e3a8a !important;
 }
 
-.kbd{
-  margin: 2px;
+.margen {
+  margin-left: 2px; 
 }
+
 
 button:disabled{
   background-color: #d3d2cf;

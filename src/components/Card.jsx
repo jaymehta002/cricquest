@@ -21,7 +21,7 @@ const Card = () => {
             description: `Correct Guesses - A successful guess will unveil the player's name, highlighted in blue. However, an incorrect guess, regardless of whether any traits match, will cost you a life.`
         },
         {
-            imgSrc: '/about6.svg',
+            imgSrc: '/hint.svg',
             title: 'Utilize Hints',
             description: `Reveal Hidden Traits Feel free to use one of your 3 hints at any point during the game to uncover a hidden trait. Click the "Hint" button and select the trait you want to reveal. Strategically use hints to boost your chances of success.`,
         },

@@ -12,7 +12,7 @@ const playerCol = ({ index, hero, player, hintMode, revealHint, mask, gameOver }
   return (
     <>
       <div
-        className={`grid grid-col-1 gap-1 text-center w-28 h-[400] font-inter font-bold design-border rounded-xl ${
+        className={`grid grid-col-1 gap-1 text-center w-28 md:h-[400] h-96 font-inter font-bold design-border rounded-xl ${
           player.playerName
             ? "completed-blue-bg blue-border"
             : "bg-design-white"
@@ -28,7 +28,7 @@ const playerCol = ({ index, hero, player, hintMode, revealHint, mask, gameOver }
           {hero.price}
         </div>
         <div
-          className={`grid h-20 text-xs ${
+          className={`grid h-20 h-16 text-xs ${
             player.playerName ? "text-white" : "design-text-black"
           }`}
         >
@@ -65,7 +65,7 @@ const playerCol = ({ index, hero, player, hintMode, revealHint, mask, gameOver }
           <div className="flex flex-col items-center justify-center">
             <Franchise team={gameOver? hero.team :player.team} />
             <p
-              className={`mb-0 ${
+              className={` ${
                 player.playerName
                   ? "text-white"
                   : player.team
