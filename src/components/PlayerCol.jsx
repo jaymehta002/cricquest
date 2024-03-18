@@ -28,7 +28,7 @@ const playerCol = ({ index, hero, player, hintMode, revealHint, mask, gameOver }
           {hero.price}
         </div>
         <div
-          className={`grid h-20 h-16 text-xs ${
+          className={`grid h-20 text-xs ${
             player.playerName ? "text-white" : "design-text-black"
           }`}
         >
