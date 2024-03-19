@@ -8,7 +8,15 @@ import {
   Age,
   BlankGuess,
 } from "../utils/design";
-const playerCol = ({ index, hero, player, hintMode, revealHint, mask, gameOver }) => {
+const playerCol = ({
+  index,
+  hero,
+  player,
+  hintMode,
+  revealHint,
+  mask,
+  gameOver,
+}) => {
   return (
     <>
       <div
@@ -32,7 +40,7 @@ const playerCol = ({ index, hero, player, hintMode, revealHint, mask, gameOver }
             player.playerName ? "text-white" : "design-text-black"
           }`}
         >
-          <div className="flex flex-col items-center justify-center">
+          <div className="flex flex-col items-center">
             {hero.role === "BT" ? (
               <>
                 <Batsman />
@@ -46,7 +54,7 @@ const playerCol = ({ index, hero, player, hintMode, revealHint, mask, gameOver }
             ) : hero.role === "AR" ? (
               <>
                 <AllRounder />
-                <span className="eq">ALL ROUNDER</span>
+                <span className="eq ">ALL ROUNDER</span>
               </>
             ) : (
               <>
@@ -63,7 +71,7 @@ const playerCol = ({ index, hero, player, hintMode, revealHint, mask, gameOver }
           onClick={hintMode ? () => revealHint(index, "team", hero) : () => {}}
         >
           <div className="flex flex-col items-center justify-center">
-            <Franchise team={gameOver? hero.team :player.team} />
+            <Franchise team={gameOver ? hero.team : player.team} />
             <p
               className={` ${
                 player.playerName
@@ -73,7 +81,11 @@ const playerCol = ({ index, hero, player, hintMode, revealHint, mask, gameOver }
                   : "text-gray-400"
               }`}
             >
-              {gameOver ? hero.team.toUpperCase() : player.team ? player.team.toUpperCase() : "TEAM"}
+              {gameOver
+                ? hero.team.toUpperCase()
+                : player.team
+                ? player.team.toUpperCase()
+                : "TEAM"}
             </p>
           </div>
         </div>
@@ -85,15 +97,15 @@ const playerCol = ({ index, hero, player, hintMode, revealHint, mask, gameOver }
           onClick={hintMode ? () => revealHint(index, "age", hero) : () => {}}
         >
           <div className="flex flex-col items-center justify-center">
-            {gameOver? (
+            {gameOver ? (
               <>
-              <p className=" pt-4 md:pt-2 pb-2">
-                <span className="font-luckiest-guy age my-3 text-5xl">
-                  {hero.age}
-                </span>
-              </p>
+                <p className=" pt-4 md:pt-2 pb-2">
+                  <span className="font-luckiest-guy age my-3 text-5xl">
+                    {hero.age}
+                  </span>
+                </p>
               </>
-            ) :player.age ? (
+            ) : player.age ? (
               <p className=" pt-4 md:pt-2 pb-2">
                 <span className="font-luckiest-guy age my-3 text-5xl">
                   {player.age}
@@ -119,7 +131,7 @@ const playerCol = ({ index, hero, player, hintMode, revealHint, mask, gameOver }
           }
         >
           <div className="flex flex-col items-center justify-center">
-            <CountryFlag country={gameOver? hero.nation :player.nation} />
+            <CountryFlag country={gameOver ? hero.nation : player.nation} />
             <p
               className={`mb-0 ${
                 player.playerName
@@ -129,7 +141,11 @@ const playerCol = ({ index, hero, player, hintMode, revealHint, mask, gameOver }
                   : "text-gray-400"
               }`}
             >
-              {gameOver? hero.nation.toUpperCase() :player.nation ? player.nation.toUpperCase() : "NATION"}
+              {gameOver
+                ? hero.nation.toUpperCase()
+                : player.nation
+                ? player.nation.toUpperCase()
+                : "NATION"}
             </p>
           </div>
         </div>
@@ -139,14 +155,14 @@ const playerCol = ({ index, hero, player, hintMode, revealHint, mask, gameOver }
             player.playerName ? "completed-blue-head" : "bg-design-gray"
           }`}
         >
-          {gameOver? (
+          {gameOver ? (
             <p className="text-xs font-bold pt-1 font-inter">
-            {hero.playerName.split(" ")[0].toUpperCase()} <br />
-            <span className="text-base">
-              {hero.playerName.split(" ")[1].toUpperCase()}
-            </span>
-          </p>
-          ) :player.playerName ? (
+              {hero.playerName.split(" ")[0].toUpperCase()} <br />
+              <span className="text-base">
+                {hero.playerName.split(" ")[1].toUpperCase()}
+              </span>
+            </p>
+          ) : player.playerName ? (
             <p className="text-xs font-bold  pt-1 font-inter">
               {player.playerName.split(" ")[0].toUpperCase()} <br />
               <span className="text-base">
