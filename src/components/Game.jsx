@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import PlayerCol from "./PlayerCol";
-import {PLAYERS} from "../assets/players";
+import { PLAYERS } from "../assets/players";
 import KeyBoard from "./KeyBoard";
 import { compare, generatePlayers } from "../functions/Players";
 import { checkLocalStorage } from "../functions/Players";
@@ -43,8 +43,6 @@ const Game = () => {
   const [warning, setWarning] = useState(false);
   const [correct, setCorrect] = useState(false);
 
-
-
   const hero = generatePlayers();
 
   useEffect(() => {
@@ -66,7 +64,7 @@ const Game = () => {
       setGameOver,
       setGuessed
     );
-  }, [])
+  }, []);
 
   function toggleHint() {
     setHintMode((prevHintMode) => !prevHintMode);
@@ -206,15 +204,13 @@ const Game = () => {
       }
       statusText += "\n";
     }
-    
+
     const finalText = `My Today's CricCard\n${statusText}💡${
       data.playerGuessed
-    } of 4 - players guessed.\n🧠${
-      15 - store.lives
-    } - Guesses taken\n👀${
+    } of 4 - players guessed.\n🧠${15 - store.lives} - Guesses taken\n👀${
       3 - store.hintsLeft
     } - Hints Used.\nShow us how many of today's players you can guess!\nplay now at cricquest.in\n #cricquest #ipl #cricket`;
-      return finalText;
+    return finalText;
   };
 
   const checkDisabled = (key) => {
@@ -280,7 +276,10 @@ const Game = () => {
             <FaHeart color="red" /> {store.lives}
           </span>
         </div>
-        <div id="screen" className=" mx-2 flex justify-center gap-1 items-center">
+        <div
+          id="screen"
+          className=" mx-2 flex justify-center gap-1 items-center"
+        >
           <PlayerCol
             index={0}
             hero={hero[0]}

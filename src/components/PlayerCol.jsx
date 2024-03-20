@@ -151,7 +151,7 @@ const playerCol = ({
         </div>
 
         <div
-          className={`grid h-full bg-design-gray rounded-b-lg ${
+          className={`grid max-w-full  h-full bg-design-gray rounded-b-lg ${
             player.playerName ? "completed-blue-head" : "bg-design-gray"
           }`}
         >
@@ -163,9 +163,9 @@ const playerCol = ({
               </span>
             </p>
           ) : player.playerName ? (
-            <p className="text-xs font-bold  pt-1 font-inter">
+            <p className="text-xs  font-bold  sm:text-xs pt-1 font-inter">
               {player.playerName.split(" ")[0].toUpperCase()} <br />
-              <span className="text-base">
+              <span className="text-[10px] font-bold">
                 {player.playerName.split(" ")[1].toUpperCase()}
               </span>
             </p>
