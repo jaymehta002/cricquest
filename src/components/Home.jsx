@@ -12,7 +12,7 @@ const Home = () => {
     <div className="absolute inset-0 bg-white opacity-90 dark:bg-white"></div>
 
     {/* Background image */}
-    <div className="absolute inset-0">
+    <div className="absolute hidden md:block inset-0">
       <img src='/background.webp' alt="Background" className="w-full h-full object-cover opacity-20 dark:opacity-10" />
     </div>
 

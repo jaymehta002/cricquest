@@ -20,14 +20,14 @@ const playerCol = ({
   return (
     <>
       <div
-        className={`grid grid-col-1 gap-1 text-center w-28 md:h-[400] h-96 font-inter font-bold design-border rounded-xl ${
+        className={`grid grid-col-1 gap-1 text-center md:w-24 w-20 md:h-[400] h-96 font-inter font-bold design-border rounded-xl ${
           player.playerName
             ? "completed-blue-bg blue-border"
             : "bg-design-white"
         }`}
       >
         <div
-          className={`p-1 bg-design-gray rounded-t-lg ${
+          className={`p-1 md:text-base text-sm bg-design-gray rounded-t-lg ${
             player.playerName
               ? "completed-blue-head text-white"
               : "design-text-black"
@@ -36,11 +36,11 @@ const playerCol = ({
           {hero.price}
         </div>
         <div
-          className={`grid h-20 text-xs ${
+          className={`grid h-16 text-xs ${
             player.playerName ? "text-white" : "design-text-black"
           }`}
         >
-          <div className="flex flex-col items-center">
+          <div className="flex text-xx md:text-xs flex-col items-center">
             {hero.role === "BT" ? (
               <>
                 <Batsman />
@@ -65,8 +65,8 @@ const playerCol = ({
           </div>
         </div>
         <div
-          className={`grid h-20 text-xs ${
-            mask && player.team == "" ? "animate-item-1" : ""
+          className={`grid md:h-20 h-16 text-xs ${
+            mask && player.team == "" ? "animate-item-1-sm md:animate-item-1" : ""
           } ${hintMode && player.team === "" ? "animate-pulse" : ""}`}
           onClick={hintMode ? () => revealHint(index, "team", hero) : () => {}}
         >
@@ -91,7 +91,7 @@ const playerCol = ({
         </div>
 
         <div
-          className={`grid h-16  text-xs ${
+          className={`grid h-16 text-xs ${
             mask && player.age == "" ? "animate-item-2" : ""
           } ${hintMode && player.age === "" ? "animate-pulse" : ""}`}
           onClick={hintMode ? () => revealHint(index, "age", hero) : () => {}}
@@ -107,7 +107,7 @@ const playerCol = ({
               </>
             ) : player.age ? (
               <p className=" pt-4 md:pt-2 pb-2">
-                <span className="font-luckiest-guy age my-3 text-5xl">
+                <span className="font-luckiest-guy age my-3 text-4xl md:text-5xl">
                   {player.age}
                 </span>
               </p>
@@ -163,14 +163,14 @@ const playerCol = ({
               </span>
             </p>
           ) : player.playerName ? (
-            <p className="text-xs  font-bold  sm:text-xs pt-1 font-inter">
+            <p className="text-xs  font-bold  sm:text-xs py-1 pt-2 font-inter">
               {player.playerName.split(" ")[0].toUpperCase()} <br />
               <span className="text-[10px] font-bold">
                 {player.playerName.split(" ")[1].toUpperCase()}
               </span>
             </p>
           ) : (
-            <div className="grid  items-center justify-center py-1">
+            <div className="grid items-center justify-center py-1">
               <BlankGuess />
             </div>
           )}

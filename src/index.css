@@ -102,7 +102,7 @@ body{
   font-weight: 600;
   font-size: 2rem;
   padding: 1px 4rem;
-  border-radius: 0.5rem;
+  border-radius: 0.4rem;
   border: none;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
   transition: background-color 0.3s;
@@ -112,20 +112,16 @@ body{
 .guess-key{
   background-color: #5f97f6;
   color: white;
+  width: 72px;
 }
 
-.guess-key:hover{
-  background-color: #1e3a8a !important;
-}
 
 .hint-key{
   background-color: #5f97f6;
   color: white;
+  width: 64px
 }
 
-.hint-key:hover{
-  background-color: #1e3a8a !important;
-}
 
 .margen {
   margin-left: 2px; 
@@ -144,6 +140,10 @@ button:disabled{
 
 .bg-hint{
   background-color: #4d4d4d;
+}
+
+.text-xs{
+  font-size: 10px;    
 }
 
 
@@ -192,6 +192,14 @@ button:disabled{
   animation-delay: 0.1s;
 }
 
+.animate-item-1-sm{
+  animation: custom-animation-sm 1s ease-in-out;
+  animation-iteration-count: 1;
+  animation-delay: 0.1s;
+}
+
+
+
 .animate-item-2 {
   animation: custom-animation-1 1s ease-in;
   animation-iteration-count: 1;
@@ -230,6 +238,27 @@ button:disabled{
   0% {
     width: auto;
     height: 64px;
+    background-color: white;
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.7;
+    width: auto;
+    height: 64px;
+    background-color: #f3f2ee;
+  }
+  100% {
+    width: auto;
+    height: 64px;
+    background-color: #f3f2ee;
+    opacity: 1;
+  }
+}
+
+@keyframes custom-animation-sm {
+  0% {
+    width: auto;
+    height:64px;
     background-color: white;
     opacity: 0.4;
   }

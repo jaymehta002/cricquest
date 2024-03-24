@@ -81,65 +81,65 @@ const Game = () => {
     toggleHint();
   };
 
-  const handleKeyPress = (key) => {
-    if (key === "DEL") {
-      setInputValue((prevInputValue) => prevInputValue.slice(0, -1));
-    } else if (key === "SPACE") {
-      setInputValue((prevInputValue) => prevInputValue + " ");
-    } else if (key === "GUESS") {
-      if (inputValue === "") return;
-      const val = handleSuggestions();
-      setTimeout(() => {
-        setEnterPressed(false);
-      }, 3500);
-      setTimeout(() => {
-        setShowPlayer(false);
-        setAttempt(true);
-      }, 2000);
-      setTimeout(() => {
-        setAttempt(false);
-      }, 2500);
-      setTimeout(() => {
-        setMask(false);
-      }, 2500);
-      if (
-        val.playerName === hero[0].playerName ||
-        val.playerName === hero[1].playerName ||
-        val.playerName === hero[2].playerName ||
-        val.playerName === hero[3].playerName
-      ) {
+    const handleKeyPress = (key) => {
+      if (key === "DEL") {
+        setInputValue((prevInputValue) => prevInputValue.slice(0, -1));
+      } else if (key === "SPACE") {
+        setInputValue((prevInputValue) => prevInputValue + " ");
+      } else if (key === "GUESS") {
+        if (inputValue === "") return;
+        const val = handleSuggestions();
         setTimeout(() => {
-          setCorrect(true);
-        }, 1000);
+          setEnterPressed(false);
+        }, 3500);
+        setTimeout(() => {
+          setShowPlayer(false);
+          setAttempt(true);
+        }, 2000);
+        setTimeout(() => {
+          setAttempt(false);
+        }, 2500);
+        setTimeout(() => {
+          setMask(false);
+        }, 2500);
+        if (
+          val.playerName === hero[0].playerName ||
+          val.playerName === hero[1].playerName ||
+          val.playerName === hero[2].playerName ||
+          val.playerName === hero[3].playerName
+        ) {
+          setTimeout(() => {
+            setCorrect(true);
+          }, 1000);
+        }
+        setEnterPressed(true);
+        setShowPlayer(true);
+        setMask(true);
+        setAnimationValue(val);
+        guessed.push(val.playerName);
+        setGuessed(guessed);
+        localStorage.setItem("guessed", JSON.stringify(guessed));
+        compare(
+          val,
+          hero,
+          store,
+          setStore,
+          data,
+          setData,
+          gameCompleted,
+          gameOver,
+          setGameOver,
+          setGameCompleted,
+          setCorrect
+        );
+        setInputValue("");
+      } else if (key === "HINT") {
+        if (store.hintsLeft === 0) return;
+        toggleHint();
+      } else {
+        setInputValue((prevInputValue) => prevInputValue + key);
       }
-      setEnterPressed(true);
-      setShowPlayer(true);
-      setMask(true);
-      setAnimationValue(val);
-      guessed.push(val.playerName);
-      setGuessed(guessed);
-      localStorage.setItem("guessed", JSON.stringify(guessed));
-      compare(
-        val,
-        hero,
-        store,
-        setStore,
-        data,
-        setData,
-        gameCompleted,
-        gameOver,
-        setGameOver,
-        setGameCompleted,
-        setCorrect
-      );
-      setInputValue("");
-    } else if (key === "HINT") {
-      if (store.hintsLeft === 0) return;
-      toggleHint();
-    } else {
-      setInputValue((prevInputValue) => prevInputValue + key);
-    }
-  };
+    };
   const handleSuggestions = () => {
     const input = inputValue.toLowerCase();
     const suggestions = PLAYERS.filter(
@@ -263,12 +263,12 @@ const Game = () => {
   return (
     <div className="bg-design-white font-inter mt-4">
       <div>
-        <div className="flex justify-center flex-row font-inter gap-9 md:gap-12 lg:gap-16 xl:gap-24 2xl:gap-24 px-4 text-center items-center mb-1">
+        <div className="flex justify-center flex-row font-inter gap-12 md:gap-16 px-4 text-center items-center mb-1">
           <div className="bg-hint text-white flex flex-row items-center px-1 py-1 rounded-lg gap-1 font-inter font-semibold">
             {" "}
             <FaMagnifyingGlass color="yellow" /> {store.hintsLeft}
           </div>
-          <span className="design-text-black text-xl">
+          <span className="design-text-black text-base md:text-xl">
             Find today&#39;s player
           </span>
           <span className="bg-hint text-white flex flex-row items-center px-1 py-1 rounded-lg gap-1 font-inter font-semibold">
@@ -328,8 +328,8 @@ const Game = () => {
         </>
       ) : (
         <>
-          <div className="flex justify-center gap-1 items-center">
-            <span className="text-xl py-4 font-bold">
+          <div className="flex justify-center gap-1 mt-2 items-center">
+            <span className="md:text-xl text-base py-4 font-bold">
               {isEnterPressed && animate(animationValue)}
               {inputValue
                 ? displaySuggestion()

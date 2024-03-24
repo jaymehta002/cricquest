@@ -1,3 +1,4 @@
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 
 const KeyBoard = ({ onKeyPress, checkDisabled }) => {
@@ -7,6 +8,40 @@ const KeyBoard = ({ onKeyPress, checkDisabled }) => {
     ["Z", "X", "C", "V", "B", "N", "M", "DEL"],
     ["HINT", "SPACE", "GUESS"],
   ];
+
+  const handleKeyDown = (event) => {
+    const key = event.key.toUpperCase();
+    if (key === " " || key === "SPACE") {
+      // Handle Space key
+      event.preventDefault(); // Prevent default behavior for Space key
+      if (!checkDisabled("SPACE")) {
+        onKeyPress("SPACE");
+      }
+    } else if (key === 'ENTER' || key === 'RETURN'){
+      event.preventDefault(); // Prevent default behavior for Enter key
+      if (!checkDisabled("GUESS")) {
+        onKeyPress("GUESS");
+      }
+    }else if (key === "DELETE" || key === "DEL" || key === "BACKSPACE") {
+      // Handle Delete key
+      event.preventDefault(); // Prevent default behavior for Delete key
+      if (!checkDisabled("DEL")) {
+        onKeyPress("DEL");
+      }
+    } else if (checkDisabled(key)) {
+      event.preventDefault(); // Prevent default behavior for disabled keys
+    } else {
+      onKeyPress(key);
+    }
+  };
+  
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onKeyPress]);
 
   return (
     <>
@@ -20,15 +55,15 @@ const KeyBoard = ({ onKeyPress, checkDisabled }) => {
               <button
                 key={keyIndex}
                 onClick={() => onKeyPress(key)}
-                className={`kbd outline-none border-none border-2 px-4 margen flex gap-1  py-1 bg-white font-inter font-bold hover:bg-gray-200 cursor-pointer design-text-black ${
+                className={`rounded kbd outline-none border-none border-2 w-10 margen flex gap-1 py-2 bg-white font-inter font-bold cursor-pointer design-text-black ${
                   key === "SPACE"
-                    ? "px-20 w-56 mx-1"
+                    ? "px-20 w-60 mx-1"
                     : key === "GUESS"
-                    ? "guess-key px-1"
+                    ? "guess-key px-4"
                     : key === "DEL"
                     ? "del-key px-2"
                     : key === "HINT"
-                    ? "hint-key px-2"
+                    ? "hint-key px-4"
                     : ""
                 }`}
                 disabled={checkDisabled(key)}

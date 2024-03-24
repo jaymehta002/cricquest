@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 export function Batsman() {
   return (
     <svg
-      width="54"
-      height="55"
+      width="48"
+      height="48"
       viewBox="0 0 54 55"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -40,8 +40,8 @@ export function Batsman() {
 export function Bowler() {
   return (
     <svg
-      width="54"
-      height="55"
+      width="48"
+      height="48"
       viewBox="0 0 54 55"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -69,8 +69,8 @@ export function Bowler() {
 export function AllRounder() {
   return (
     <svg
-      width="54"
-      height="55"
+      width="48"
+      height="48"
       viewBox="0 0 54 55"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -122,8 +122,8 @@ export function AllRounder() {
 export function WicketKeeper() {
   return (
     <svg
-      width="54"
-      height="55"
+      width="48"
+      height="48"
       viewBox="0 0 54 55"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -170,7 +170,7 @@ export function Franchise({ team }) {
     case "Delhi":
       return (
         <svg
-          width="80"
+          width="70"
           height="50"
           viewBox="0 10 80 20"
           fill="none"
@@ -212,7 +212,7 @@ export function Franchise({ team }) {
     case "Rajasthan":
       return (
         <svg
-          width="80"
+          width="70"
           height="50"
           viewBox="0 10 80 20"
           fill="none"
@@ -254,7 +254,7 @@ export function Franchise({ team }) {
     case "Hyderabad":
       return (
         <svg
-          width="80"
+          width="70"
           height="50"
           viewBox="0 10 80 20"
           fill="none"
@@ -296,7 +296,7 @@ export function Franchise({ team }) {
     case "Lucknow":
       return (
         <svg
-          width="80"
+          width="70"
           height="50"
           viewBox="0 10 80 20"
           fill="none"
@@ -338,7 +338,7 @@ export function Franchise({ team }) {
     case "Chennai":
       return (
         <svg
-          width="80"
+          width="70"
           height="50"
           viewBox="0 10 80 20"
           fill="none"
@@ -380,7 +380,7 @@ export function Franchise({ team }) {
     case "Punjab":
       return (
         <svg
-          width="80"
+          width="70"
           height="50"
           viewBox="0 10 80 20"
           fill="none"
@@ -422,7 +422,7 @@ export function Franchise({ team }) {
     case "Bangalore":
       return (
         <svg
-          width="80"
+          width="70"
           height="50"
           viewBox="0 10 80 20"
           fill="none"
@@ -464,7 +464,7 @@ export function Franchise({ team }) {
     case "Gujrat":
       return (
         <svg
-          width="80"
+          width="70"
           height="50"
           viewBox="0 10 80 20"
           fill="none"
@@ -506,7 +506,7 @@ export function Franchise({ team }) {
     case "Kolkata":
       return (
         <svg
-          width="80"
+          width="70"
           height="50"
           viewBox="0 10 80 20"
           fill="none"
@@ -548,7 +548,7 @@ export function Franchise({ team }) {
     case "Mumbai":
       return (
         <svg
-          width="80"
+          width="70"
           height="50"
           viewBox="0 10 80 20"
           fill="none"
@@ -590,7 +590,7 @@ export function Franchise({ team }) {
     default:
       return (
         <svg
-          width="80"
+          width="70"
           height="50"
           viewBox="-16 10 80 20"
           fill="none"
@@ -622,7 +622,7 @@ export function Franchise({ team }) {
 export function Age() {
   return (
     <svg
-      width="80"
+      width="70"
       height="50"
       viewBox="0 10 80 25"
       fill="none"
