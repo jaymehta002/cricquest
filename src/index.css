@@ -1,10 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 
-
 /* @tailwind base; */
 @tailwind components;
 @tailwind utilities;
-
 
 *{
   padding: 0;
@@ -19,38 +17,32 @@ body{
   background-color: #f3f2ee;
 }
 
-/* @media screen and (min-width: 424px) and (max-width: 474px) {
-  .equal{
-    margin-bottom: 1rem;
-  }
-  .eq {
-    margin-bottom: 1rem;
-  }
-} */
-
-@media screen and (max-width: 445px) {
+@media screen and (width <= 445px) {
   /* Write your CSS rules here */
   .bot{
     margin-bottom: 1rem;
   } 
+
   .eq{
     margin-bottom: 1rem;
   }
 }
 
-@media screen and (max-width: 393px){
+@media screen and (width <= 393px){
   /* Write your CSS rules here */
   .bot{
     margin-bottom: 1rem;
   } 
+
   .eq{
-    margin-bottom: 0rem;
+    margin-bottom: 0;
   }
 }
 
 
 .bg-design-white {
   background-color: #f3f2ee;
+
   /* width: 100%; */
 }
 
@@ -87,6 +79,7 @@ body{
   border: 2px solid #174fbb;
 
 }
+
 .completed-blue-head{
   background-color: #174fbb !important;
   color: white !important;
@@ -104,7 +97,7 @@ body{
   padding: 1px 4rem;
   border-radius: 0.4rem;
   border: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 6px rgb(0 0 0 / 10%), 0 1px 3px rgb(0 0 0 / 8%);
   transition: background-color 0.3s;
   cursor: pointer;
 }
@@ -113,7 +106,7 @@ body{
   font-size: 12px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (width <= 768px) {
   /* Write your CSS rules here */
   .text-mt{
     font-size: 10px;
@@ -165,6 +158,7 @@ button:disabled{
   animation-timing-function: ease-in-out; /* Adjust timing function as needed */
   animation-iteration-count: 1; /* Play animation once */
 }
+
 .animate-custom-2 {
   animation-name: customAnimation;
   animation-delay: 0.5s;
@@ -173,6 +167,7 @@ button:disabled{
   animation-timing-function: ease-in-out; /* Adjust timing function as needed */
   animation-iteration-count: 1; /* Play animation once */
 }
+
 .animate-custom-3 {
   animation-name: customAnimation;
   opacity: 0;
@@ -188,9 +183,11 @@ button:disabled{
   0% {
       opacity: 0;
   }
+
   50% {
       opacity: 1;
   }
+
   100% {
       opacity: 0;
   }
@@ -203,7 +200,7 @@ button:disabled{
   animation-delay: 0.1s;
 }
 
-@media screen and (max-width: 768px){
+@media screen and (width <= 768px){
   .animate-item-1{
     animation: custom-animation-sm 1s ease-in-out;
     animation-iteration-count: 1;
@@ -233,12 +230,14 @@ button:disabled{
     background-color: white;
     opacity: 0.4;
   }
+
   50% {
     opacity: 0.7;
     width: auto;
     height: 80px;
     background-color: white;
   }
+
   100% {
     width: auto;
     height: 80px;
@@ -254,12 +253,14 @@ button:disabled{
     background-color: white;
     opacity: 0.4;
   }
+
   50% {
     opacity: 0.7;
     width: auto;
     height: 64px;
     background-color: #f3f2ee;
   }
+
   100% {
     width: auto;
     height: 64px;
@@ -275,12 +276,14 @@ button:disabled{
     background-color: white;
     opacity: 0.4;
   }
+
   50% {
     opacity: 0.7;
     width: auto;
     height: 64px;
     background-color: #f3f2ee;
   }
+
   100% {
     width: auto;
     height: 64px;
