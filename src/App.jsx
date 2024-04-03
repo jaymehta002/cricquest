@@ -1,23 +1,27 @@
-import NavBar from "./components/NavBar"
-import Game from "./components/Game";
-import Home from "./components/Home";
+import React, { Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import PrivacyPolicy from "./components/PrivacyPolicy";
+
+// Lazy loading components
+const NavBar = React.lazy(() => import("./components/NavBar"));
+const Game = React.lazy(() => import("./components/Game"));
+const Home = React.lazy(() => import("./components/Home"));
+const PrivacyPolicy = React.lazy(() => import("./components/PrivacyPolicy"));
 
 const App = () => {
-  
   return (
     <>
       <BrowserRouter>
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/play" element={<Game />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        </Routes>
+        <Suspense fallback={<div>Loading...</div>}>
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/play" element={<Game />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          </Routes>
+        </Suspense>
       </BrowserRouter>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
