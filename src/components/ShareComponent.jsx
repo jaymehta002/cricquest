@@ -1,4 +1,5 @@
-import React from 'react';
+import PropTypes from 'prop-types';
+
 import { FacebookShareButton, TwitterShareButton, WhatsappShareButton, RedditShareButton } from 'react-share';
 import { FacebookIcon, TwitterIcon, WhatsappIcon, RedditIcon } from 'react-share';
 
@@ -23,5 +24,11 @@ const ShareButtons = ({ text, url }) => {
     </div>
   );
 };
+
+ShareButtons.propTypes = {
+  text: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+};
+
 
 export default ShareButtons;

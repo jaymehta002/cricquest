@@ -1,0 +1,6 @@
+# This is a comment explaining what the following directive does
+User-agent: *
+Disallow: /admin  # Disallow crawling of the admin section
+Disallow: /private  # Disallow crawling of the private section
+
+sitemap: http://www.cricquest.in/sitemap.xml

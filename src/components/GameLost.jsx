@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { FacebookShareButton, TwitterShareButton, WhatsappShareButton, XIcon, RedditShareButton } from 'react-share';
 import { FacebookIcon, WhatsappIcon, RedditIcon } from 'react-share';
+import PropTypes from 'prop-types';
+
 const GameLost = ({ data, handleScreenshot }) => {
     const [prompt, setPrompt] = useState(false);
     const text = handleScreenshot()
+    
     const handleCopy = () => {
         navigator.clipboard.writeText(text );
         setTimeout(() => {
@@ -42,7 +45,7 @@ const GameLost = ({ data, handleScreenshot }) => {
                 </button>
             </div>
             <div className="bg-design-white rounded-lg p-8 mb-8">
-                <h1 className="text-2xl font-bold text-center text-gray-800 mb-4">Oh no! You've lost the game.</h1>
+                <h1 className="text-2xl font-bold text-center text-gray-800 mb-4">Oh no! You&#39;ve lost the game.</h1>
                 <div className="grid grid-cols-4 lg:grid-cols-4 gap-4">
                     <div className="flex flex-col items-center mb-4 lg:mb-0">
                         <span className="text-2xl font-bold text-red-500">{data.totalWins}</span>
@@ -65,5 +68,11 @@ const GameLost = ({ data, handleScreenshot }) => {
         </div>
     );
 };
+
+GameLost.propTypes = {
+    data: PropTypes.object.isRequired,
+    handleScreenshot: PropTypes.func.isRequired
+};
+
 
 export default GameLost;

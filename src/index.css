@@ -109,6 +109,17 @@ body{
   cursor: pointer;
 }
 
+.text-mt{
+  font-size: 12px;
+}
+
+@media screen and (max-width: 768px) {
+  /* Write your CSS rules here */
+  .text-mt{
+    font-size: 10px;
+  }
+}
+
 .guess-key{
   background-color: #5f97f6;
   color: white;
@@ -192,10 +203,12 @@ button:disabled{
   animation-delay: 0.1s;
 }
 
-.animate-item-1-sm{
-  animation: custom-animation-sm 1s ease-in-out;
-  animation-iteration-count: 1;
-  animation-delay: 0.1s;
+@media screen and (max-width: 768px){
+  .animate-item-1{
+    animation: custom-animation-sm 1s ease-in-out;
+    animation-iteration-count: 1;
+    animation-delay: 0.1s;
+  }
 }
 
 

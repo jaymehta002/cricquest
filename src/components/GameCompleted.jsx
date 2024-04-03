@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FacebookShareButton, TwitterShareButton, WhatsappShareButton, XIcon, RedditShareButton } from 'react-share';
 import { FacebookIcon, WhatsappIcon, RedditIcon } from 'react-share';
-
+import PropTypes from 'prop-types';
 const GameCompleted = ({ data, handleScreenshot }) => {
   
   const [prompt, setPrompt] = useState(false);
@@ -47,7 +47,7 @@ const GameCompleted = ({ data, handleScreenshot }) => {
             </div>
       <div className="bg-design-white  rounded-lg p-5 mb-8">
         <h1 className="text-xl font-bold text-center text-gray-800 mb-4">
-          Congratulations! You've completed the game.
+          Congratulations! You&#39;ve completed the game.
         </h1>
         <div className="grid grid-cols-4 lg:grid-cols-4 gap-4">
           <div className="flex flex-col items-center mb-4 lg:mb-0">
@@ -90,6 +90,11 @@ const GameCompleted = ({ data, handleScreenshot }) => {
       </div>
     </div>
   );
+};
+
+GameCompleted.propTypes = {
+  data: PropTypes.object,
+  handleScreenshot: PropTypes.func,
 };
 
 export default GameCompleted;

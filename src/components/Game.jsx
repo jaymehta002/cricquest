@@ -2,14 +2,16 @@ import { useEffect, useState } from "react";
 import PlayerCol from "./PlayerCol";
 import { PLAYERS } from "../assets/players";
 import KeyBoard from "./KeyBoard";
-import { compare, generatePlayers } from "../functions/Players";
-import { checkLocalStorage } from "../functions/Players";
-import { updateStorePlayer } from "../functions/Players";
-import { Franchise } from "../utils/design";
-import { CountryFlag } from "../utils/TeamDesign";
+import Franchise from "./PlayerCol/Franchise";
 import { FaHeart, FaMagnifyingGlass } from "react-icons/fa6";
 import GameCompleted from "./GameCompleted";
 import GameLost from "./GameLost";
+import Nation from "./PlayerCol/Nation";
+import generate from "../functions/generate";
+import { checkLocalStorage } from "../functions/checkLocalStorage";
+import { updateStorePlayer } from "../functions/updateStorePlayer";
+import { compare } from "../functions/compare";
+
 const Game = () => {
   const [inputValue, setInputValue] = useState("");
   const [store, setStore] = useState({
@@ -40,10 +42,9 @@ const Game = () => {
   const [attempt, setAttempt] = useState(false);
   const [mask, setMask] = useState(false);
   const [animationValue, setAnimationValue] = useState("");
-  const [warning, setWarning] = useState(false);
   const [correct, setCorrect] = useState(false);
 
-  const hero = generatePlayers();
+  const hero = generate(PLAYERS);
 
   useEffect(() => {
     checkLocalStorage(
@@ -130,7 +131,7 @@ const Game = () => {
           gameOver,
           setGameOver,
           setGameCompleted,
-          setCorrect
+          PLAYERS
         );
         setInputValue("");
       } else if (key === "HINT") {
@@ -150,10 +151,6 @@ const Game = () => {
     if (suggestions.length > 0) {
       return suggestions[0];
     } else {
-      setTimeout(() => {
-        setWarning(false);
-      }, 1000);
-      setWarning(true);
       setInputValue("");
       return null;
     }
@@ -244,7 +241,7 @@ const Game = () => {
               <p className="font-luckiest-guy age text-5xl pt-1">{val.age}</p>
             </span>
             <span className="mt-2 animate-custom-3">
-              <CountryFlag country={val.nation} />
+              <Nation nation={val.nation} />
               {/* <p className="design-text-black">{val.nation}</p> */}
             </span>
             {/* </div> : attempt ? correct ? <span> {store.lives} lives left </span> : <div className="text-center">Incorrect attempt</div> : ''} */}

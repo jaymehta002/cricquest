@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import PropTypes from "prop-types";
 
 const KeyBoard = ({ onKeyPress, checkDisabled }) => {
@@ -80,6 +80,7 @@ const KeyBoard = ({ onKeyPress, checkDisabled }) => {
 
 KeyBoard.propTypes = {
   onKeyPress: PropTypes.func.isRequired,
+  checkDisabled: PropTypes.func.isRequired,
 };
 
 export default KeyBoard;

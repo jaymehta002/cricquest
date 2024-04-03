@@ -1,13 +1,8 @@
-import { CountryFlag } from "../utils/TeamDesign";
-import {
-  Batsman,
-  Bowler,
-  WicketKeeper,
-  AllRounder,
-  Franchise,
-  Age,
-  BlankGuess,
-} from "../utils/design";
+import Age from "./PlayerCol/Age";
+import Blank from "./PlayerCol/Blank";
+import Franchise from "./PlayerCol/Franchise";
+import Nation from "./PlayerCol/Nation";
+import Role from "./PlayerCol/Role";
 const playerCol = ({
   index,
   hero,
@@ -40,33 +35,11 @@ const playerCol = ({
             player.playerName ? "text-white" : "design-text-black"
           }`}
         >
-          <div className="flex text-xx md:text-xs flex-col items-center">
-            {hero.role === "BT" ? (
-              <>
-                <Batsman />
-                <span className="bot">BATSMAN</span>
-              </>
-            ) : hero.role === "BW" ? (
-              <>
-                <Bowler />
-                <p className="bot">BOWLER</p>
-              </>
-            ) : hero.role === "AR" ? (
-              <>
-                <AllRounder />
-                <span className="eq ">ALL ROUNDER</span>
-              </>
-            ) : (
-              <>
-                <WicketKeeper />
-                <span className="">WICKET KEEPER</span>
-              </>
-            )}
-          </div>
+          <Role role={hero.role} />
         </div>
         <div
-          className={`grid md:h-20 h-16 text-xs ${
-            mask && player.team == "" ? "animate-item-1-sm md:animate-item-1" : ""
+          className={`grid md:h-20 h-16 text-mt ${
+            mask && player.team == "" ? "animate-item-1" : ""
           } ${hintMode && player.team === "" ? "animate-pulse" : ""}`}
           onClick={hintMode ? () => revealHint(index, "team", hero) : () => {}}
         >
@@ -91,7 +64,7 @@ const playerCol = ({
         </div>
 
         <div
-          className={`grid h-16 text-xs ${
+          className={`grid h-16 text-mt ${
             mask && player.age == "" ? "animate-item-2" : ""
           } ${hintMode && player.age === "" ? "animate-pulse" : ""}`}
           onClick={hintMode ? () => revealHint(index, "age", hero) : () => {}}
@@ -123,7 +96,7 @@ const playerCol = ({
         </div>
 
         <div
-          className={`grid h-16 mb-1 text-xs mt-1 ${
+          className={`grid h-16 mb-1 text-mt   mt-1 ${
             mask && player.nation == "" ? "animate-item-3" : ""
           } ${hintMode && player.nation === "" ? "animate-pulse" : ""}`}
           onClick={
@@ -131,7 +104,7 @@ const playerCol = ({
           }
         >
           <div className="flex flex-col items-center justify-center">
-            <CountryFlag country={gameOver ? hero.nation : player.nation} />
+            <Nation nation={gameOver ? hero.nation : player.nation} />
             <p
               className={`mb-0 ${
                 player.playerName
@@ -158,7 +131,7 @@ const playerCol = ({
           {gameOver ? (
             <p className="text-xs font-bold pt-1 font-inter">
               {hero.playerName.split(" ")[0].toUpperCase()} <br />
-              <span className="text-base">
+              <span className="text-[10px] font-bold">
                 {hero.playerName.split(" ")[1].toUpperCase()}
               </span>
             </p>
@@ -171,7 +144,7 @@ const playerCol = ({
             </p>
           ) : (
             <div className="grid items-center justify-center py-1">
-              <BlankGuess />
+              <Blank />
             </div>
           )}
         </div>
