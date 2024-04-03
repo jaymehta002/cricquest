@@ -1,3 +1,5 @@
+// import { checkStat, updateLife, updateStorePlayer } from "./Players";
+
 import {checkStat} from "./checkStat";
 import {updateLife} from "./updateLife";
 import { updateStorePlayer } from "./updateStorePlayer";
@@ -16,7 +18,6 @@ export async function compare(
     setGameCompleted,
     PLAYERS
   ) {
-    console.log(PLAYERS);
     const check = PLAYERS.find(
       (player) => player.playerName.toLowerCase() === val.playerName.toLowerCase()
     );

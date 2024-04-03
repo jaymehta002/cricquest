@@ -10,7 +10,7 @@ import Nation from "./PlayerCol/Nation";
 import generate from "../functions/generate";
 import { checkLocalStorage } from "../functions/checkLocalStorage";
 import { updateStorePlayer } from "../functions/updateStorePlayer";
-import { compare } from "../functions/compare";
+import { compare } from "../functions/compare"; 
 
 const Game = () => {
   const [inputValue, setInputValue] = useState("");
