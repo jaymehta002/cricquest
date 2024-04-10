@@ -1,7 +1,8 @@
 // import { checkStat, updateLife, updateStorePlayer } from "./Players";
 
-import {checkStat} from "./checkStat";
-import {updateLife} from "./updateLife";
+import checkPlayersGuessed from "./checkPlayersGuessed";
+import { checkStat } from "./checkStat";
+import { updateLife } from "./updateLife";
 import { updateStorePlayer } from "./updateStorePlayer";
 
 
@@ -16,7 +17,9 @@ export async function compare(
     gameOver,
     setGameOver,
     setGameCompleted,
-    PLAYERS
+    PLAYERS,
+    totalPlayersGuessed,
+    setTotalPlayersGuessed,
   ) {
     const check = PLAYERS.find(
       (player) => player.playerName.toLowerCase() === val.playerName.toLowerCase()
@@ -50,12 +53,15 @@ export async function compare(
       flag = false;
     } else {
       setTimeout(() => {
-        updateLife(store, setStore);
+        updateLife(store, setStore, setTotalPlayersGuessed);
       }, 1600);
     }
   
     setTimeout(() => {
-      checkStat(store, setData, setGameOver, setGameCompleted);
+      checkStat(store, setData, setGameOver, setGameCompleted, setTotalPlayersGuessed);
     }, 1700);
+
+
+
     localStorage.setItem("store", JSON.stringify(store));
   }

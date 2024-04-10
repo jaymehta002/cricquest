@@ -14,10 +14,14 @@ const GameLost = ({ data, handleScreenshot }) => {
         }, 1000);
         setPrompt(true);
     }
+    const shareCount = async () => {
+        const count = JSON.parse(localStorage.getItem("shareCount"));
+        await localStorage.setItem("shareCount", JSON.stringify(count + 1));
+      }
     return (
         <div className="flex flex-col justify-center items-center">
             <p className=" text-black font-bold mb-4 px-8 rounded-lg transition duration-300 ease-in-out transform  mt-8">Challenge Your Friends</p>
-            <div className='flex flex-row gap-2'>
+            <div className='flex flex-row gap-2' onClick={shareCount}>
                 <TwitterShareButton url={' '} title={text}>
                     <XIcon size={32} round />
                 </TwitterShareButton>

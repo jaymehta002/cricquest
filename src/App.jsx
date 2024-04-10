@@ -7,6 +7,7 @@ const NavBar = React.lazy(() => import("./components/NavBar"));
 const Game = React.lazy(() => import("./components/Game"));
 const Home = React.lazy(() => import("./components/Home"));
 const PrivacyPolicy = React.lazy(() => import("./components/PrivacyPolicy"));
+const Badges = React.lazy(() => import("./components/Badges/Badges"));
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/play" element={<Game />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path='/awards' element={<Badges />} />
           </Routes>
         </Suspense>
       </BrowserRouter>

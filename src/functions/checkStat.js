@@ -1,7 +1,8 @@
+import checkPlayersGuessed from "./checkPlayersGuessed";
 
 const curDate = new Date().getDate();
 
-export async function checkStat(store, setData, setGameOver, setGameCompleted) {
+export async function checkStat(store, setData, setGameOver, setGameCompleted, setTotalPlayersGuessed) {
     const newData = JSON.parse(localStorage.getItem("stat"));
     const newStat = { ...newData };
     const count = store.players.filter(
@@ -10,6 +11,7 @@ export async function checkStat(store, setData, setGameOver, setGameCompleted) {
     newStat.playerGuessed = count;
     const val = JSON.parse(localStorage.getItem("store"));
     if (val.lives < 1) {
+      await checkPlayersGuessed(store, setTotalPlayersGuessed);
       await setGameOver(true);
       await localStorage.setItem("gameOver", true);
       newStat.totalGames += 1;
@@ -19,6 +21,7 @@ export async function checkStat(store, setData, setGameOver, setGameCompleted) {
       store.players[2].playerName !== "" &&
       store.players[3].playerName !== ""
     ) {
+      await checkPlayersGuessed(store, setTotalPlayersGuessed);
       await setGameCompleted(true);
       await localStorage.setItem("gameCompleted", true);
       newStat.totalWins += 1;

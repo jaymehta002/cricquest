@@ -5,7 +5,12 @@ export async function checkLocalStorage(
   setData,
   setGameCompleted,
   setGameOver,
-  setGuessed
+  setGuessed,
+  setTotalPlayersGuessed,
+  setShareCount,
+  setOnePlayer,
+  setTwoPlayer,
+  setThreePlayer,
 ) {
   const fullDate = new Date();
   const date = fullDate.getDate();
@@ -40,4 +45,40 @@ export async function checkLocalStorage(
     localStorage.removeItem("gameOver");
     localStorage.setItem("lastPlayed", date);
   }
+
+  const total = JSON.parse(localStorage.getItem("totalPlayers"));
+  if (!total) {
+    localStorage.setItem("totalPlayers", JSON.stringify(0));
+  } else {
+    setTotalPlayersGuessed(total);
+  }
+
+  const shareCount = JSON.parse(localStorage.getItem("shareCount"));
+  if (!shareCount) {
+    localStorage.setItem("shareCount", JSON.stringify(0));
+  } else {
+    setShareCount(shareCount);
+  }
+
+  const onePlayer = JSON.parse(localStorage.getItem("onePlayer"));
+  if (!onePlayer) {
+    localStorage.setItem("onePlayer", JSON.stringify(0));
+  } else {
+    setOnePlayer(onePlayer);
+  }
+
+  const twoPlayer = JSON.parse(localStorage.getItem("twoPlayer"));
+  if (!twoPlayer) {
+    localStorage.setItem("twoPlayer", JSON.stringify(0));
+  } else {
+    setTwoPlayer(twoPlayer);
+  }
+
+  const threePlayer = JSON.parse(localStorage.getItem("threePlayer"));
+  if (!threePlayer) {
+    localStorage.setItem("threePlayer", JSON.stringify(0));
+  } else {
+    setThreePlayer(threePlayer);
+  }
+
 }

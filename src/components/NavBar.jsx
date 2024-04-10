@@ -60,6 +60,7 @@ const NavBar = () => {
     }
   }
 
+
   return (
     <nav className="bg-design-white shadow-lg">
       <div className="md:max-w-4xl mx-auto px-4 py-3">
@@ -76,11 +77,17 @@ const NavBar = () => {
     {timeLeft.minutes.toString().padStart(2, '0')}:
     {timeLeft.seconds.toString().padStart(2, '0')}
   </div>
-  <button onClick={scrollAbout} className="text-gray-500 bg-design-white  px-1 py-2 border-none rounded-md ">
+  <button onClick={scrollAbout} className="text-gray-500 text-lg bg-design-white hover:cursor-pointer px-1 py-2 border-none rounded-md ">
     <i className="fas fa-question-circle"></i>
   </button>
 
     <Dropdown />
+
+    <button className="text-gray-500 text-lg bg-design-white border-none rounded-md hover:cursor-pointer ">
+      <Link to='/awards' className='text-gray-500'>
+      <i className="fa fa-solid fa-award"></i>
+      </Link>
+    </button>
         </div>
         </div>
       </div>

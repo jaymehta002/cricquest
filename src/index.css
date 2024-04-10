@@ -1,44 +1,43 @@
-@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap");
 
 /* @tailwind base; */
 @tailwind components;
 @tailwind utilities;
 
-*{
+* {
   padding: 0;
   margin: 0;
 }
 
-html{
+html {
   scroll-behavior: smooth;
 }
 
-body{
+body {
   background-color: #f3f2ee;
 }
 
 @media screen and (width <= 445px) {
   /* Write your CSS rules here */
-  .bot{
+  .bot {
     margin-bottom: 1rem;
-  } 
+  }
 
-  .eq{
+  .eq {
     margin-bottom: 1rem;
   }
 }
 
-@media screen and (width <= 393px){
+@media screen and (width <= 393px) {
   /* Write your CSS rules here */
-  .bot{
+  .bot {
     margin-bottom: 1rem;
-  } 
+  }
 
-  .eq{
+  .eq {
     margin-bottom: 0;
   }
 }
-
 
 .bg-design-white {
   background-color: #f3f2ee;
@@ -50,15 +49,14 @@ body{
   border: 2px solid #d3d2cf;
 }
 
-.bg-design-gray{
+.bg-design-gray {
   background-color: #d3d2cf !important;
-
 }
 
 .age {
   font-weight: 800;
-    color: #D84F4F;
-    text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
+  color: #d84f4f;
+  text-shadow: -2px 0 white, 0 2px white, 2px 0 white, 0 -2px white;
 }
 
 .svg {
@@ -69,28 +67,26 @@ body{
   color: #1e293b;
 }
 
-
-.completed-blue-bg{
+.completed-blue-bg {
   background-color: #5c88dd !important;
   color: white !important;
 }
 
 .blue-border {
   border: 2px solid #174fbb;
-
 }
 
-.completed-blue-head{
+.completed-blue-head {
   background-color: #174fbb !important;
   color: white !important;
 }
 
-.wdt{
+.wdt {
   width: 100%;
 }
 
 .custom-button {
-  background-image: linear-gradient(to right, #1E40AF, #3B82F6, #1E40AF);
+  background-image: linear-gradient(to right, #1e40af, #3b82f6, #1e40af);
   color: white;
   font-weight: 600;
   font-size: 2rem;
@@ -102,55 +98,50 @@ body{
   cursor: pointer;
 }
 
-.text-mt{
+.text-mt {
   font-size: 12px;
 }
 
 @media screen and (width <= 768px) {
   /* Write your CSS rules here */
-  .text-mt{
+  .text-mt {
     font-size: 10px;
   }
 }
 
-.guess-key{
+.guess-key {
   background-color: #5f97f6;
   color: white;
   width: 72px;
 }
 
-
-.hint-key{
+.hint-key {
   background-color: #5f97f6;
   color: white;
-  width: 64px
+  width: 64px;
 }
-
 
 .margen {
-  margin-left: 2px; 
+  margin-left: 2px;
 }
 
-
-button:disabled{
+button:disabled {
   background-color: #d3d2cf;
   color: white;
   cursor: not-allowed;
 }
 
 .custom-button:hover {
-  background-image: linear-gradient(to right, #1E3A8A, #2563EB, #1e3a8a);
+  background-image: linear-gradient(to right, #1e3a8a, #2563eb, #1e3a8a);
 }
 
-.bg-hint{
+.bg-hint {
   background-color: #4d4d4d;
 }
 
-.text-xs{
-  font-size: 10px;    
+.text-xs {
+  font-size: 10px;
 }
-
-
 
 .animate-custom-1 {
   animation-name: var-animation;
@@ -179,18 +170,17 @@ button:disabled{
 
 @keyframes var-animation {
   0% {
-      opacity: 0;
+    opacity: 0;
   }
 
   50% {
-      opacity: 1;
+    opacity: 1;
   }
 
   100% {
-      opacity: 0;
+    opacity: 0;
   }
 }
-
 
 .animate-item-1 {
   animation: custom-animation 1s ease-in-out;
@@ -198,15 +188,13 @@ button:disabled{
   animation-delay: 0.1s;
 }
 
-@media screen and (width <= 768px){
-  .animate-item-1{
+@media screen and (width <= 768px) {
+  .animate-item-1 {
     animation: custom-animation-sm 1s ease-in-out;
     animation-iteration-count: 1;
     animation-delay: 0.1s;
   }
 }
-
-
 
 .animate-item-2 {
   animation: custom-animation-1 1s ease-in;
@@ -219,7 +207,6 @@ button:disabled{
   animation-iteration-count: 1;
   animation-delay: 1.2s;
 }
-
 
 @keyframes custom-animation {
   0% {
@@ -270,7 +257,7 @@ button:disabled{
 @keyframes custom-animation-sm {
   0% {
     width: auto;
-    height:64px;
+    height: 64px;
     background-color: white;
     opacity: 0.4;
   }
@@ -288,4 +275,142 @@ button:disabled{
     background-color: #f3f2ee;
     opacity: 1;
   }
+}
+
+.bg-badge {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, #F5D5AF 0%, #CA7D20 100%);
+}
+
+.title{
+  position: absolute;
+  left: 32%;
+  padding: 0 12px 0 12px;
+  border-radius: 20px;
+  color: white;
+}
+
+.orange {
+  background-color: #C46D06 !important;
+  border: 1px solid #FAA95F;
+}
+
+.purple{
+  background-color: #C006C4 !important;
+  border: 1px solid #FA5FF3;
+}
+
+.silver{
+  background-color: #8EBEC4 !important;
+  border: 1px solid #DFF4FD;
+}
+
+.golden {
+  background-color: #C48F06 !important;
+  border: 1px solid #FAC55F;
+}
+
+.level{
+  position: absolute;
+  color: #C46D06;
+  left: 45%;
+  top: 38%;
+}
+
+.level-purple{
+  position: absolute;
+  color: #C006C4;
+  left: 48%;
+  top: 38%;
+}
+
+.level-green{
+  position: absolute;
+  color: #048210;
+  left: 45%;
+  top: 38%;
+}
+
+.level-silver{
+  position: absolute;
+  color: #929699;
+  left: 42%;
+  top: 38%;
+}
+.level-golden{
+  position: absolute;
+  color: #EEC21C;
+  left: 45%;
+  top: 38%;
+}
+
+
+.progress-bar-orange{
+  position: absolute;
+  bottom: 20%;
+  left: 15%;
+  width: 160px;
+  height: 10px;
+  border-radius: 20px;
+  background-color: #FFDBB9;
+}
+
+.progress-bar-purple{
+  position: absolute;
+  bottom: 20%;
+  left: 15%;
+  width: 160px;
+  height: 10px;
+  border-radius: 20px;
+  background-color: #FEB9FF;
+}
+.progress-bar-silver{
+  position: absolute;
+  bottom: 20%;
+  left: 15%;
+  width: 160px;
+  height: 10px;
+  border-radius: 20px;
+  background-color: #B6BFC5;
+}
+.progress-bar-golden{
+  position: absolute;
+  bottom: 20%;
+  left: 15%;
+  width: 160px;
+  height: 10px;
+  border-radius: 20px;
+  background-color: #FFE7B9;
+}
+
+.progress{
+  background-color: #5F97F6;
+  height: 10px;
+}
+
+
+.progress-count{
+  position: absolute;
+  bottom: 10%;
+  left: 38%;
+  background-color: #C46D06;
+  color : white;
+  padding: 0 8px 0 8px;
+  border-radius: 20px;
+}
+
+
+.green {
+  background-color: #2CC406;
+  border: 1px solid #6BFA5F;
+}
+.progress-bar-green{
+  position: absolute;
+  bottom: 20%;
+  left: 15%;
+  width: 160px;
+  height: 10px;
+  border-radius: 20px;
+  background-color: #B9FFBC;
 }
