@@ -6,7 +6,7 @@ const Silver = ({data}) => {
   return (
     <>
         <div>
-            <div className="bg-[url('./silverBadge.png')] h-60 w-48 rounded-lg p-4 relative">
+            <div className="bg-[url('/silverBadge.png')] h-60 w-48 rounded-lg p-4 relative">
                 <span className='title silver font-inter text-sm font-bold uppercase'>Silver</span>
                 <h1 className='level-silver font-inter'>{data}</h1>
                 <div className="progress-bar-silver">

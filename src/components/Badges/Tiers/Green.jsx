@@ -6,7 +6,7 @@ const Green = ({data}) => {
   return (
     <>
         <div>
-            <div className="bg-[url('./greenBadge.png')] h-60 w-48 rounded-lg p-4 relative">
+            <div className="bg-[url('/greenBadge.png')] h-60 w-48 rounded-lg p-4 relative">
                 <span className='title green font-inter text-sm font-bold uppercase'>Green</span>
                 <h1 className='level-green font-inter'>{data}</h1>
                 <div className="progress-bar-green">
