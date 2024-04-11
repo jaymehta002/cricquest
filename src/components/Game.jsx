@@ -44,10 +44,6 @@ const Game = () => {
   const [mask, setMask] = useState(false);
   const [animationValue, setAnimationValue] = useState("");
   const [correct, setCorrect] = useState(false);
-  const [shareCount, setShareCount] = useState(0);
-  const [onePlayer, setOnePlayer] = useState(0);
-  const [twoPlayer, setTwoPlayer] = useState(0);
-  const [threePlayer, setThreePlayer] = useState(0);
 
   const hero = generate(PLAYERS);
 
@@ -61,10 +57,6 @@ const Game = () => {
       setGameOver,
       setGuessed,
       setTotalPlayersGuessed,
-      setShareCount,
-      setOnePlayer,
-      setTwoPlayer,
-      setThreePlayer
     );
     checkLocalStorage(
       store,
@@ -75,10 +67,6 @@ const Game = () => {
       setGameOver,
       setGuessed,
       setTotalPlayersGuessed,
-      setShareCount,
-      setOnePlayer,
-      setTwoPlayer,
-      setThreePlayer
     );
   }, []);
 

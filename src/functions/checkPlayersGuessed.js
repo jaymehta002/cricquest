@@ -1,4 +1,4 @@
-export default function checkPlayersGuessed(store, setTotalPlayersGuessed, setOnePlayer, setTwoPlayer, setThreePlayer) {
+export default function checkPlayersGuessed(store, setTotalPlayersGuessed) {
     const val = JSON.parse(localStorage.getItem("totalPlayers"));
     let one = JSON.parse(localStorage.getItem("onePlayer"));
     let two = JSON.parse(localStorage.getItem("twoPlayer"));

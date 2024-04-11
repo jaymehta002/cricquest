@@ -1,9 +1,9 @@
-import React from 'react'
 import Orange from './Tiers/Orange'
 import Purple from './Tiers/Purple'
 import Green from './Tiers/Green'
 import Silver from './Tiers/Silver'
 import Golden from './Tiers/Golden'
+import PropTypes from 'prop-types'
 
 const WinStreak = ({streak}) => {
   return (
@@ -12,6 +12,10 @@ const WinStreak = ({streak}) => {
         <p className='text-center mt-2 text-sm font-semibold'>Win Streak</p>
     </div>
   )
+}
+
+WinStreak.propTypes = {
+  streak: PropTypes.number
 }
 
 export default WinStreak

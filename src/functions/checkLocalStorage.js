@@ -6,11 +6,7 @@ export async function checkLocalStorage(
   setGameCompleted,
   setGameOver,
   setGuessed,
-  setTotalPlayersGuessed,
-  setShareCount,
-  setOnePlayer,
-  setTwoPlayer,
-  setThreePlayer,
+  setTotalPlayersGuessed
 ) {
   const fullDate = new Date();
   const date = fullDate.getDate();
@@ -56,29 +52,21 @@ export async function checkLocalStorage(
   const shareCount = JSON.parse(localStorage.getItem("shareCount"));
   if (!shareCount) {
     localStorage.setItem("shareCount", JSON.stringify(0));
-  } else {
-    setShareCount(shareCount);
-  }
+  } 
 
   const onePlayer = JSON.parse(localStorage.getItem("onePlayer"));
   if (!onePlayer) {
     localStorage.setItem("onePlayer", JSON.stringify(0));
-  } else {
-    setOnePlayer(onePlayer);
   }
 
   const twoPlayer = JSON.parse(localStorage.getItem("twoPlayer"));
   if (!twoPlayer) {
     localStorage.setItem("twoPlayer", JSON.stringify(0));
-  } else {
-    setTwoPlayer(twoPlayer);
-  }
+  } 
 
   const threePlayer = JSON.parse(localStorage.getItem("threePlayer"));
   if (!threePlayer) {
     localStorage.setItem("threePlayer", JSON.stringify(0));
-  } else {
-    setThreePlayer(threePlayer);
-  }
+  } 
 
 }

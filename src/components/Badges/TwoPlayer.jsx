@@ -1,9 +1,9 @@
-import React from 'react'
 import Orange from './Tiers/Orange'
 import Purple from './Tiers/Purple'
 import Green from './Tiers/Green'
 import Silver from './Tiers/Silver'
 import Golden from './Tiers/Golden'
+import PropTypes from 'prop-types'
 
 const TwoPlayer = ({twoPlayer}) => {
   return (
@@ -12,6 +12,10 @@ const TwoPlayer = ({twoPlayer}) => {
         <p className='text-center mt-2 text-sm font-semibold'>Two Player Guessed</p>
     </div>
   )
+}
+
+TwoPlayer.propTypes = {
+  twoPlayer: PropTypes.number
 }
 
 export default TwoPlayer

@@ -1,6 +1,3 @@
-// import { checkStat, updateLife, updateStorePlayer } from "./Players";
-
-import checkPlayersGuessed from "./checkPlayersGuessed";
 import { checkStat } from "./checkStat";
 import { updateLife } from "./updateLife";
 import { updateStorePlayer } from "./updateStorePlayer";
