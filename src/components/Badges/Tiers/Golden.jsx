@@ -5,16 +5,24 @@ const Golden = ({data}) => {
     const level = 1
   return (
     <>
-        <div>
+     <div className="bg-golden relative font-inter">
+        <span className="uppercase text-xs  golden title-golden font-bold">golden</span>
+        <span className="level-golden font-bold">{data}</span>
+        <div className="progress-bar-golden">
+            <div className="progress" style={{ width: `${percent}%` }}></div>
+        </div>
+        <p className="progress-count-golden text-xs font-inter golden">{data} of 50</p>
+      </div>
+        {/* <div>
             <div className="bg-[url('/goldenBadge.png')] h-60 w-48 rounded-lg p-4 relative">
                 <span className='title golden font-inter text-sm font-bold uppercase'>Golden</span>
                 <h1 className='level-golden font-inter'>{data}</h1>
                 <div className="progress-bar-golden">
-                    <div className="progress" style={{ width: `${percent}%` }}></div> {/* Adjust width dynamically for progress */}
+                    <div className="progress" style={{ width: `${percent}%` }}></div> 
                 </div>
                 <p className='font-inter progress-count golden'>{data} of 50</p>
             </div>
-        </div>
+        </div> */}
     </>
   )
 }

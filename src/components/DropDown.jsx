@@ -44,7 +44,7 @@ const DropDown = () => {
   return (
     <div className="relative" ref={dropdownRef}>
       <div
-        className="w-8 h-8 flex items-center justify-center rounded-md cursor-pointer"
+        className="w-4 h-8 flex items-center justify-center rounded-md cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
       >
         <HiOutlineShare />

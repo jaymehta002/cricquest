@@ -5,10 +5,9 @@ import Silver from './Tiers/Silver'
 
 const GamesCompleted = ({gamesCompleted}) => {
   return (
-    <div>
-        {gamesCompleted < 3 ? <Orange data={gamesCompleted}/> : <Purple data={gamesCompleted}/> }
-        {/* <Silver data={gamesCompleted}/> */}
-        <p className='text-center font-bold'>Games Completed</p>
+    <div className='flex flex-col justify-center items-center'>
+        {gamesCompleted < 3 ? <Orange data={gamesCompleted}/> : gamesCompleted < 7 ? <Purple data={gamesCompleted}/> : gamesCompleted < 16 ? <Green data={gamesCompleted}/> : gamesCompleted < 25 ? <Silver data={playersGuessed}/>: <Golden data={gamesCompleted}/> }
+        <p className='font-semibold text-sm text-center mt-2 '>Games Completed</p>
     </div>
   )
 }

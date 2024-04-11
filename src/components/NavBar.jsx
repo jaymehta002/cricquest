@@ -72,12 +72,12 @@ const NavBar = () => {
             </div>
           </Link>
           <div className="flex items-center space-x-4">
-  <div className="text-gray-500 font-semibold">
+  <div className="text-gray-500 md:text-base text-sm font-semibold">
     {timeLeft.hours.toString().padStart(2, '0')}:
     {timeLeft.minutes.toString().padStart(2, '0')}:
     {timeLeft.seconds.toString().padStart(2, '0')}
   </div>
-  <button onClick={scrollAbout} className="text-gray-500 text-lg bg-design-white hover:cursor-pointer px-1 py-2 border-none rounded-md ">
+  <button onClick={scrollAbout} className="text-gray-500 text-lg bg-design-white hover:cursor-pointer py-2 border-none rounded-md ">
     <i className="fas fa-question-circle"></i>
   </button>
 

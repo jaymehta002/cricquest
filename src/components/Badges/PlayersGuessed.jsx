@@ -7,9 +7,9 @@ import Golden from './Tiers/Golden'
 
 const PlayersGuessed = ({playersGuessed}) => {
   return (
-    <div>
+    <div className='flex flex-col justify-center items-center'>
         {playersGuessed < 3 ? <Orange data={playersGuessed}/> : playersGuessed < 7 ? <Purple data={playersGuessed}/> : playersGuessed < 16 ? <Green data={playersGuessed}/> : playersGuessed < 25 ? <Silver data={playersGuessed}/>: <Golden data={playersGuessed}/> }
-        <p className='text-center font-bold'>Players Guessed</p>
+        <p className='text-center mt-2 text-sm font-semibold'>Players Guessed</p>
     </div>
   )
 }

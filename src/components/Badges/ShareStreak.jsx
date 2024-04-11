@@ -9,7 +9,7 @@ const ShareStreak = ({count}) => {
   return (
     <div>
         {count < 3 ? <Orange data={count}/> : count < 7 ? <Purple data={count}/> : count < 16 ? <Green data={count}/> : count < 25 ? <Silver data={count}/>: <Golden data={count}/> }
-        <p className='text-center font-bold'>Win Streak</p>
+        <p className='text-center text-sm mt-2 font-semibold'>Share Streak</p>
     </div>
   )
 }

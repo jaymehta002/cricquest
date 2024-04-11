@@ -277,12 +277,6 @@ button:disabled {
   }
 }
 
-.bg-badge {
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(circle, #F5D5AF 0%, #CA7D20 100%);
-}
-
 .title{
   position: absolute;
   left: 32%;
@@ -291,15 +285,7 @@ button:disabled {
   color: white;
 }
 
-.orange {
-  background-color: #C46D06 !important;
-  border: 1px solid #FAA95F;
-}
 
-.purple{
-  background-color: #C006C4 !important;
-  border: 1px solid #FA5FF3;
-}
 
 .silver{
   background-color: #8EBEC4 !important;
@@ -315,13 +301,6 @@ button:disabled {
   position: absolute;
   color: #C46D06;
   left: 45%;
-  top: 38%;
-}
-
-.level-purple{
-  position: absolute;
-  color: #C006C4;
-  left: 48%;
   top: 38%;
 }
 
@@ -346,25 +325,7 @@ button:disabled {
 }
 
 
-.progress-bar-orange{
-  position: absolute;
-  bottom: 20%;
-  left: 15%;
-  width: 160px;
-  height: 10px;
-  border-radius: 20px;
-  background-color: #FFDBB9;
-}
 
-.progress-bar-purple{
-  position: absolute;
-  bottom: 20%;
-  left: 15%;
-  width: 160px;
-  height: 10px;
-  border-radius: 20px;
-  background-color: #FEB9FF;
-}
 .progress-bar-silver{
   position: absolute;
   bottom: 20%;
@@ -386,19 +347,9 @@ button:disabled {
 
 .progress{
   background-color: #5F97F6;
-  height: 10px;
+  height: 6px;
 }
 
-
-.progress-count{
-  position: absolute;
-  bottom: 10%;
-  left: 38%;
-  background-color: #C46D06;
-  color : white;
-  padding: 0 8px 0 8px;
-  border-radius: 20px;
-}
 
 
 .green {
@@ -413,4 +364,253 @@ button:disabled {
   height: 10px;
   border-radius: 20px;
   background-color: #B9FFBC;
+}
+
+/* Orange */
+
+.bg-orange {
+  background: url('/Orange.png');
+  background-size: contain;
+  background-repeat: no-repeat; /* Ensure the image is not repeated */
+  width: 152.6px;
+  height: 190.99px;
+}
+
+
+.progress-count{
+  position: absolute;
+  bottom: 8%;
+  left: 33%;
+  color : white;
+  padding: 0 8px 0 8px;
+  border-radius: 20px;
+}
+
+.progress-bar-orange{
+  position: absolute;
+  bottom: 20%;
+  left: 15%;
+  width: 100px;
+  height: 6px;
+  border-radius: 20px;
+  background-color: #FFDBB9;
+}
+.title-orange{
+  position: absolute;
+  left: 25%;
+  top: 10%;
+  padding: 0 12px 0 12px;
+  border-radius: 20px;
+  color: white;
+}
+
+.orange {
+  background-color: #C46D06 !important;
+  border: 1px solid #FAA95F;
+}
+
+
+
+
+
+
+
+
+
+/* Purple */
+.bg-purple {
+  background: url('/purpleBadge.png');
+  background-size: contain;
+  background-repeat: no-repeat; /* Ensure the image is not repeated */
+  width: 152.6px;
+  height: 190.99px;
+}
+.purple{
+  background-color: #C006C4 !important;
+  border: 1px solid #FA5FF3;
+}
+.title-purple{
+  position: absolute;
+  left: 28%;
+  top: 10%;
+  padding: 0 12px 0 12px;
+  border-radius: 20px;
+  color: white;
+}
+
+.progress-bar-purple{
+  position: absolute;
+  bottom: 20%;
+  left: 18%;
+  width: 100px;
+  height: 6px;
+  border-radius: 20px;
+  background-color: #FEB9FF;
+}
+
+
+.level-purple{
+  position: absolute;
+  color: #C006C4;
+  left: 48%;
+  top: 38%;
+}
+
+.progress-count-purple{
+  position: absolute;
+  bottom: 8%;
+  left: 36%;
+  color : white;
+  padding: 0 8px 0 8px;
+  border-radius: 20px;
+}
+
+
+/* Green */
+.bg-green {
+  background: url('/greenBadge.png');
+  background-size: contain;
+  background-repeat: no-repeat; /* Ensure the image is not repeated */
+  width: 152.6px;
+  height: 190.99px;
+}
+
+.green{
+  background-color: #2CC406 !important;
+  border: 1px solid #6BFA5F;
+}
+
+.title-green{
+  position: absolute;
+  left: 28%;
+  top: 10%;
+  padding: 0 12px 0 12px;
+  border-radius: 20px;
+  color: white;
+}
+
+.progress-bar-green{
+  position: absolute;
+  bottom: 20%;
+  left: 18%;
+  width: 100px;
+  height: 6px;
+  border-radius: 20px;
+  background-color: #B9FFBC;
+}
+
+.level-green{
+  position: absolute;
+  color: #048210;
+  left: 45%;
+  top: 38%;
+}
+
+.progress-count-green{
+  position: absolute;
+  bottom: 8%;
+  left: 36%;
+  color : white;
+  padding: 0 8px 0 8px;
+  border-radius: 20px;
+}
+
+/* silver */
+
+.bg-silver {
+  background: url('/silverBadge.png');
+  background-size: contain;
+  background-repeat: no-repeat; /* Ensure the image is not repeated */
+  width: 152.6px;
+  height: 190.99px;
+}
+
+.silver{
+  background-color: #8EBEC4 !important;
+  border: 1px solid #DFF4FD;
+}
+
+.title-silver{
+  position: absolute;
+  left: 28%;
+  top: 10%;
+  padding: 0 12px 0 12px;
+  border-radius: 20px;
+  color: white;
+}
+
+.progress-bar-silver{
+  position: absolute;
+  bottom: 20%;
+  left: 18%;
+  width: 100px;
+  height: 6px;
+  border-radius: 20px;
+  background-color: #B6BFC5;
+}
+
+.level-silver{
+  position: absolute;
+  color: #929699;
+  left: 45%;
+  top: 38%;
+}
+
+.progress-count-silver{
+  position: absolute;
+  bottom: 8%;
+  left: 36%;
+  color : white;
+  padding: 0 8px 0 8px;
+  border-radius: 20px;
+}
+
+/* golden */
+
+.bg-golden {
+  background: url('/goldenBadge.png');
+  background-size: contain;
+  background-repeat: no-repeat; /* Ensure the image is not repeated */
+  width: 152.6px;
+  height: 190.99px;
+}
+
+.golden{
+  background-color: #C48F06 !important;
+  border: 1px solid #FAC55F;
+}
+
+.title-golden{
+  position: absolute;
+  left: 28%;
+  top: 10%;
+  padding: 0 12px 0 12px;
+  border-radius: 20px;
+  color: white;
+}
+
+.progress-bar-golden{
+  position: absolute;
+  bottom: 20%;
+  left: 18%;
+  width: 100px;
+  height: 6px;
+  border-radius: 20px;
+  background-color: #FFE7B9;
+}
+
+.level-golden{
+  position: absolute;
+  color: #EEC21C;
+  left: 43%;
+  top: 38%;
+}
+
+.progress-count-golden{
+  position: absolute;
+  bottom: 8%;
+  left: 32%;
+  color : white;
+  padding: 0 8px 0 8px;
+  border-radius: 20px;
 }
