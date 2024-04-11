@@ -116,8 +116,8 @@ const Badges = () => {
       
   return (
     <div className="font-inter container mx-auto py-10 max-h-screen">
-        <h1 className='text-center uppercase font-inter m-4'>Achievements</h1>
-      <div className="flex justify-center">
+        <h1 className='text-center  font-inter mb-8'>Achievements</h1>
+      <div className="flex justify-center ">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 items-center">
           <GamesCompleted gamesCompleted={gamesCompleted}/>
           <PlayersGuessed playersGuessed={playersGuessed}/>
