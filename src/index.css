@@ -614,3 +614,12 @@ button:disabled {
   padding: 0 8px 0 8px;
   border-radius: 20px;
 }
+
+
+.bg-completed {
+  background: url('/completed.png');
+  background-size: contain;
+  background-repeat: no-repeat; /* Ensure the image is not repeated */
+  width: 152.6px;
+  height: 190.99px;
+}

@@ -1,21 +1,34 @@
-import Orange from './Tiers/Orange'
-import Purple from './Tiers/Purple'
-import Green from './Tiers/Green'
-import Silver from './Tiers/Silver'
-import Golden from './Tiers/Golden'
-import PropTypes from 'prop-types'
+import Orange from "./Tiers/Orange";
+import Purple from "./Tiers/Purple";
+import Green from "./Tiers/Green";
+import Silver from "./Tiers/Silver";
+import Golden from "./Tiers/Golden";
+import PropTypes from "prop-types";
+import Completed from "./Tiers/Completed";
 
-const WinStreak = ({streak}) => {
+const WinStreak = ({ streak }) => {
   return (
     <div>
-        {streak < 3 ? <Orange data={streak}/> : streak < 7 ? <Purple data={streak}/> : streak < 16 ? <Green data={streak}/> : streak < 25 ? <Silver data={streak}/>: <Golden data={streak}/> }
-        <p className='text-center mt-2 text-sm font-semibold'>Win Streak</p>
+      {streak <= 2 ? (
+        <Orange data={streak} />
+      ) : streak <= 6 ? (
+        <Purple data={streak} />
+      ) : streak <= 15 ? (
+        <Green data={streak} />
+      ) : streak <= 24 ? (
+        <Silver data={streak} />
+      ) : streak <=49 ? (
+        <Golden data={streak} />
+      ) : (
+      <Completed />
+      )}
+      <p className="text-center mt-2 text-sm font-semibold">Win Streak</p>
     </div>
-  )
-}
+  );
+};
 
 WinStreak.propTypes = {
-  streak: PropTypes.number
-}
+  streak: PropTypes.number,
+};
 
-export default WinStreak
+export default WinStreak;

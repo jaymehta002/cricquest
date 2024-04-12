@@ -4,19 +4,22 @@ import Green from "./Tiers/Green";
 import Silver from "./Tiers/Silver";
 import Golden from "./Tiers/Golden";
 import PropTypes from "prop-types";
+import Completed from "./Tiers/Completed";
 const PlayersGuessed = ({ playersGuessed }) => {
   return (
     <div className="flex flex-col justify-center items-center">
-      {playersGuessed < 3 ? (
+      {playersGuessed <= 2 ? (
         <Orange data={playersGuessed} />
-      ) : playersGuessed < 7 ? (
+      ) : playersGuessed <= 6 ? (
         <Purple data={playersGuessed} />
-      ) : playersGuessed < 16 ? (
+      ) : playersGuessed <= 15 ? (
         <Green data={playersGuessed} />
-      ) : playersGuessed < 25 ? (
+      ) : playersGuessed <= 24 ? (
         <Silver data={playersGuessed} />
-      ) : (
+      ) : playersGuessed <=49 ? (
         <Golden data={playersGuessed} />
+      ) : (
+        <Completed />
       )}
       <p className="text-center mt-2 text-sm font-semibold">Players Guessed</p>
     </div>
