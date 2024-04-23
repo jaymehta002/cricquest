@@ -275,10 +275,11 @@ const Game = () => {
           content="cricquest, cric, quest, best cricket game, cricket, quiz, game, sports, cricket quiz, cricket trivia"
         />
       </head>
-      <div className="bg-design-white font-inter mt-4">
+      {/* <div className="bg-[url('/background.webp')] bg-opacity-100 font-inter py-2  h-screen"> */}
+      <div className="bg-play  font-inter py-2  h-screen">
         <div className="">
           <div className="flex justify-center flex-row font-inter gap-12 md:gap-16 px-4 text-center items-center mb-1">
-            <div className="bg-hint text-white flex flex-row items-center px-1 py-1 rounded-lg gap-1 font-inter font-semibold">
+            <div className=" bg-hint text-white flex flex-row items-center px-1 py-1 rounded-lg gap-1 font-inter font-semibold">
               {" "}
               <FaMagnifyingGlass color="yellow" /> {store.hintsLeft}
             </div>

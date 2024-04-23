@@ -15,7 +15,7 @@ const playerCol = ({
   return (
     <>
       <div
-        className={`grid grid-col-1 gap-1 text-center md:w-24 w-20 md:h-[400] h-96 font-inter font-bold design-border rounded-xl ${
+        className={`bg-design-white grid grid-col-1 gap-1 text-center md:w-24 w-20 md:h-[400] h-96 font-inter font-bold design-border rounded-xl ${
           player.playerName
             ? "completed-blue-bg blue-border"
             : "bg-design-white"

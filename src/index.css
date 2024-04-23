@@ -624,3 +624,15 @@ button:disabled {
   height: 190.99px;
 }
 
+.bg-play {
+  background: url('/backgroundedit.png') no-repeat center center/cover;
+}
+
+@media screen and (max-width: 768px) {
+  .bg-play {
+    background: #f3f2ee; /* Set background color for small screens */
+    background-size: cover; /* Ensure the background color covers the entire element */
+    background-image: none; /* Remove background image for small screens */
+  }
+}
+
