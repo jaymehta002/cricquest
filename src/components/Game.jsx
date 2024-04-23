@@ -10,7 +10,7 @@ import Nation from "./PlayerCol/Nation";
 import generate from "../functions/generate";
 import { checkLocalStorage } from "../functions/checkLocalStorage";
 import { updateStorePlayer } from "../functions/updateStorePlayer";
-import { compare } from "../functions/compare"; 
+import { compare } from "../functions/compare";
 
 const Game = () => {
   const [inputValue, setInputValue] = useState("");
@@ -56,7 +56,7 @@ const Game = () => {
       setGameCompleted,
       setGameOver,
       setGuessed,
-      setTotalPlayersGuessed,
+      setTotalPlayersGuessed
     );
     checkLocalStorage(
       store,
@@ -66,7 +66,7 @@ const Game = () => {
       setGameCompleted,
       setGameOver,
       setGuessed,
-      setTotalPlayersGuessed,
+      setTotalPlayersGuessed
     );
   }, []);
 
@@ -85,67 +85,67 @@ const Game = () => {
     toggleHint();
   };
 
-    const handleKeyPress = (key) => {
-      if (key === "DEL") {
-        setInputValue((prevInputValue) => prevInputValue.slice(0, -1));
-      } else if (key === "SPACE") {
-        setInputValue((prevInputValue) => prevInputValue + " ");
-      } else if (key === "GUESS") {
-        if (inputValue === "") return;
-        const val = handleSuggestions();
+  const handleKeyPress = (key) => {
+    if (key === "DEL") {
+      setInputValue((prevInputValue) => prevInputValue.slice(0, -1));
+    } else if (key === "SPACE") {
+      setInputValue((prevInputValue) => prevInputValue + " ");
+    } else if (key === "GUESS") {
+      if (inputValue === "") return;
+      const val = handleSuggestions();
+      setTimeout(() => {
+        setEnterPressed(false);
+      }, 3500);
+      setTimeout(() => {
+        setShowPlayer(false);
+        setAttempt(true);
+      }, 2000);
+      setTimeout(() => {
+        setAttempt(false);
+      }, 2500);
+      setTimeout(() => {
+        setMask(false);
+      }, 2500);
+      if (
+        val.playerName === hero[0].playerName ||
+        val.playerName === hero[1].playerName ||
+        val.playerName === hero[2].playerName ||
+        val.playerName === hero[3].playerName
+      ) {
         setTimeout(() => {
-          setEnterPressed(false);
-        }, 3500);
-        setTimeout(() => {
-          setShowPlayer(false);
-          setAttempt(true);
-        }, 2000);
-        setTimeout(() => {
-          setAttempt(false);
-        }, 2500);
-        setTimeout(() => {
-          setMask(false);
-        }, 2500);
-        if (
-          val.playerName === hero[0].playerName ||
-          val.playerName === hero[1].playerName ||
-          val.playerName === hero[2].playerName ||
-          val.playerName === hero[3].playerName
-        ) {
-          setTimeout(() => {
-            setCorrect(true);
-          }, 1000);
-        }
-        setEnterPressed(true);
-        setShowPlayer(true);
-        setMask(true);
-        setAnimationValue(val);
-        guessed.push(val.playerName);
-        setGuessed(guessed);
-        localStorage.setItem("guessed", JSON.stringify(guessed));
-        compare(
-          val,
-          hero,
-          store,
-          setStore,
-          data,
-          setData,
-          gameCompleted,
-          gameOver,
-          setGameOver,
-          setGameCompleted,
-          PLAYERS,
-          totalPlayersGuessed,
-          setTotalPlayersGuessed,
-        );
-        setInputValue("");
-      } else if (key === "HINT") {
-        if (store.hintsLeft === 0) return;
-        toggleHint();
-      } else {
-        setInputValue((prevInputValue) => prevInputValue + key);
+          setCorrect(true);
+        }, 1000);
       }
-    };
+      setEnterPressed(true);
+      setShowPlayer(true);
+      setMask(true);
+      setAnimationValue(val);
+      guessed.push(val.playerName);
+      setGuessed(guessed);
+      localStorage.setItem("guessed", JSON.stringify(guessed));
+      compare(
+        val,
+        hero,
+        store,
+        setStore,
+        data,
+        setData,
+        gameCompleted,
+        gameOver,
+        setGameOver,
+        setGameCompleted,
+        PLAYERS,
+        totalPlayersGuessed,
+        setTotalPlayersGuessed
+      );
+      setInputValue("");
+    } else if (key === "HINT") {
+      if (store.hintsLeft === 0) return;
+      toggleHint();
+    } else {
+      setInputValue((prevInputValue) => prevInputValue + key);
+    }
+  };
   const handleSuggestions = () => {
     const input = inputValue.toLowerCase();
     const suggestions = PLAYERS.filter(
@@ -264,87 +264,101 @@ const Game = () => {
 
   return (
     <>
-    <div className="bg-design-white font-inter mt-4">
-      <div className="">
-        <div className="flex justify-center flex-row font-inter gap-12 md:gap-16 px-4 text-center items-center mb-1">
-          <div className="bg-hint text-white flex flex-row items-center px-1 py-1 rounded-lg gap-1 font-inter font-semibold">
-            {" "}
-            <FaMagnifyingGlass color="yellow" /> {store.hintsLeft}
-          </div>
-          <span className="design-text-black font-inter text-base md:text-xl">
-            Find today&#39;s player
-          </span>
-          <span className="bg-hint text-white flex flex-row items-center px-1 py-1 rounded-lg gap-1 font-inter font-semibold">
-            {" "}
-            <FaHeart color="red" /> {store.lives}
-          </span>
-        </div>
-        <div
-          id="screen"
-          className=" mx-2 flex justify-center gap-1 items-center"
-        >
-          <PlayerCol
-            index={0}
-            hero={hero[0]}
-            player={store.players[0]}
-            hintMode={hintMode}
-            revealHint={revealHint}
-            mask={mask}
-            gameOver={gameOver}
-          />
-          <PlayerCol
-            index={1}
-            hero={hero[1]}
-            player={store.players[1]}
-            hintMode={hintMode}
-            revealHint={revealHint}
-            mask={mask}
-            gameOver={gameOver}
-          />
-          <PlayerCol
-            index={2}
-            hero={hero[2]}
-            player={store.players[2]}
-            hintMode={hintMode}
-            revealHint={revealHint}
-            mask={mask}
-            gameOver={gameOver}
-          />
-          <PlayerCol
-            index={3}
-            hero={hero[3]}
-            player={store.players[3]}
-            hintMode={hintMode}
-            revealHint={revealHint}
-            mask={mask}
-            gameOver={gameOver}
-          />
-        </div>
-      </div>
-      {gameCompleted ? (
-        <>
-          <GameCompleted data={data} handleScreenshot={handleScreenshot} />
-        </>
-      ) : gameOver ? (
-        <>
-          <GameLost data={data} handleScreenshot={handleScreenshot} />
-        </>
-      ) : (
-        <>
-          <div className="flex justify-center gap-1 mt-2 items-center">
-            <span className="md:text-xl text-base py-4 font-bold">
-              {isEnterPressed && animate(animationValue)}
-              {inputValue
-                ? displaySuggestion()
-                : isEnterPressed
-                ? ""
-                : "Enter Player Name.."}
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+          name="description"
+          content="CricQuest - Test your cricket knowledge with our exciting cricket quiz game. Play now and challenge your friends!"
+        />
+        <meta
+          name="keywords"
+          content="cricquest, cric, quest, best cricket game, cricket, quiz, game, sports, cricket quiz, cricket trivia"
+        />
+      </head>
+      <div className="bg-design-white font-inter mt-4">
+        <div className="">
+          <div className="flex justify-center flex-row font-inter gap-12 md:gap-16 px-4 text-center items-center mb-1">
+            <div className="bg-hint text-white flex flex-row items-center px-1 py-1 rounded-lg gap-1 font-inter font-semibold">
+              {" "}
+              <FaMagnifyingGlass color="yellow" /> {store.hintsLeft}
+            </div>
+            <span className="design-text-black font-inter text-base md:text-xl">
+              Find today&#39;s player
+            </span>
+            <span className="bg-hint text-white flex flex-row items-center px-1 py-1 rounded-lg gap-1 font-inter font-semibold">
+              {" "}
+              <FaHeart color="red" /> {store.lives}
             </span>
           </div>
-          <KeyBoard onKeyPress={handleKeyPress} checkDisabled={checkDisabled} />
-        </>
-      )}
-    </div>
+          <div
+            id="screen"
+            className=" mx-2 flex justify-center gap-1 items-center"
+          >
+            <PlayerCol
+              index={0}
+              hero={hero[0]}
+              player={store.players[0]}
+              hintMode={hintMode}
+              revealHint={revealHint}
+              mask={mask}
+              gameOver={gameOver}
+            />
+            <PlayerCol
+              index={1}
+              hero={hero[1]}
+              player={store.players[1]}
+              hintMode={hintMode}
+              revealHint={revealHint}
+              mask={mask}
+              gameOver={gameOver}
+            />
+            <PlayerCol
+              index={2}
+              hero={hero[2]}
+              player={store.players[2]}
+              hintMode={hintMode}
+              revealHint={revealHint}
+              mask={mask}
+              gameOver={gameOver}
+            />
+            <PlayerCol
+              index={3}
+              hero={hero[3]}
+              player={store.players[3]}
+              hintMode={hintMode}
+              revealHint={revealHint}
+              mask={mask}
+              gameOver={gameOver}
+            />
+          </div>
+        </div>
+        {gameCompleted ? (
+          <>
+            <GameCompleted data={data} handleScreenshot={handleScreenshot} />
+          </>
+        ) : gameOver ? (
+          <>
+            <GameLost data={data} handleScreenshot={handleScreenshot} />
+          </>
+        ) : (
+          <>
+            <div className="flex justify-center gap-1 mt-2 items-center">
+              <span className="md:text-xl text-base py-4 font-bold">
+                {isEnterPressed && animate(animationValue)}
+                {inputValue
+                  ? displaySuggestion()
+                  : isEnterPressed
+                  ? ""
+                  : "Enter Player Name.."}
+              </span>
+            </div>
+            <KeyBoard
+              onKeyPress={handleKeyPress}
+              checkDisabled={checkDisabled}
+            />
+          </>
+        )}
+      </div>
     </>
   );
 };

@@ -7,7 +7,7 @@ const HomeBig = () => {
        <div className="bg-design-white">
     <div className="custom-container">
   <div className="relative h-screen font-inter bg-cover bg-center">
-    {/* Dark mode overlay */}
+    {/* Dark mode overlay  */}
     <div className="absolute inset-0 bg-white opacity-90 dark:bg-white"></div>
 
     {/* Background image */}
