@@ -112,10 +112,10 @@ const Badges = () => {
 
   return (
     <div className="font-inter container mx-auto py-10 max-h-screen">
-      <h1 className="text-center  font-inter mb-2">Achievements</h1>
-      <p className="text-center text-base font-inter mb-2">Collect a Variety of Caps as your <b><i>Awards!</i></b></p>
+      <h1 className="text-center  font-inter mb-4">Achievements</h1>
+      <p className="text-center text-sm md:text-base font-inter">Collect a Variety of Caps as your <b><i>Awards!</i></b></p>
       <div className="flex items-center justify-center">
-      <img src="/caps.png" alt="caps" className="mb-2" height={96} width={500} />
+      <img src="/caps.png" alt="caps" className="mb-4 md:h-24 h-14"  />
       </div>
       <div className="flex justify-center ">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 items-center">
